@@ -1,0 +1,94 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+        <link rel="stylesheet" href="./assets/css/orderhistory.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+     <div id="preloader">
+        <div class="loader">
+            <div class="circle"></div>
+            <p>Noble Social Hub</p>
+        </div>
+    </div>
+
+    <nav class="custom-navbar">
+        <div class="nav-left">
+            <button class="menu-btn" id="mobile-toggle">
+                <i class='bx bx-menu-alt-left'></i>
+            </button>
+            <div class="brand">
+                <!-- <img src="./assets/img/Noble Social Hub brand logo.png" alt="Logo"> -->
+                <a href=""><img src="./assets/img/Noble Social Hub brand logo.png" alt="Logo"></a>
+            </div>
+        </div>
+
+        <div class="nav-center">
+            <div class="welcome-text">
+                <h2>Welcome Back, <span>Prosperibe!</span></h2>
+                <p>Grow your social media with ease</p>
+            </div>
+        </div>
+
+        <div class="nav-right">
+            <div class="action-icons">
+                <a href=""><button class="icon-btn gold-btn"><i class='bx bx-bell'></i></button></a>
+                <a href=""><button class="icon-btn teal-btn"><i class='bx bx-support'></i></button></a>
+                <a href=""><button class="icon-btn purple-btn"><i class='bx bx-grid-alt'></i></button></a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="dashboard-container">
+        <aside class="sidebar" id="sidebar">
+            <div class="user-panel">
+                <div class="user-profile">
+                    <div class="avatar">P</div>
+                    <div class="u-info">
+                        <span class="u-name">Prosperibe</span>
+                        <span class="u-balance text-balance">#0.00</span>
+                    </div>
+                </div>
+
+                <div class="theme-control">
+                    <div class="mode-label">
+                        <i class='bx bx-moon'></i>
+                        <span>Dark Mode</span>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="theme-checkbox">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+
+            <nav class="side-links">
+                <p class="section-label">Main Menu</p>
+                <ul>
+                    <li class="active"><a href="index.html"><i class='bx bx-home-alt'></i> <span>Dashboard</span></a>
+                    </li>
+                    <li><a href="addfund.html"><i class='bx bx-wallet'></i> <span>Add Fund</span></a></li>
+                    <li><a href="#"><i class='bx bx-history'></i> <span>Transactions</span></a></li>
+                    <li><a href=""><i class='bx bx-shopping-bag'></i> <span>Order History</span></a></li>
+                </ul>
+
+                <p class="section-label">Our Services</p>
+                <ul>
+                    <li><a href="#"><i class='bx bx-shopping-bag'></i> <span>Buy Account</span></a></li>
+                    <li><a href="#"><i class='bx bx-phone'></i> <span>Buy Number</span></a></li>
+                    <li><a href=""><i class='bx bx-rocket'></i> <span>Boost Accounts</span></a></li>
+                </ul>
+
+                <p class="section-label">Account</p>
+                <ul>
+                    <li><a href="#"><i class='bx bx-cog'></i> <span>Settings</span></a></li>
+                    <li><a href="#" class="logout"><i class='bx bx-log-out'></i> <span>Logout</span></a></li>
+                </ul>
+            </nav>
+        </aside>
+
+    <script src="./assets/js/orderhistory.js"></script>
+</body>
+</html>
