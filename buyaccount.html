@@ -1,13 +1,15 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-        <link rel="stylesheet" href="./assets/css/buyaccount.css">
+    <link rel="stylesheet" href="./assets/css/buyaccount.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
+
 <body>
-     <div id="preloader">
+    <div id="preloader">
         <div class="loader">
             <div class="circle"></div>
             <p>Noble Social Hub</p>
@@ -70,25 +72,146 @@
                     <li class="active"><a href="index.html"><i class='bx bx-home-alt'></i> <span>Dashboard</span></a>
                     </li>
                     <li><a href="addfund.html"><i class='bx bx-wallet'></i> <span>Add Fund</span></a></li>
-                    <li><a href="#"><i class='bx bx-history'></i> <span>Transactions</span></a></li>
-                    <li><a href=""><i class='bx bx-shopping-bag'></i> <span>Order History</span></a></li>
+                    <li><a href="transation.html"><i class='bx bx-history'></i> <span>Transactions</span></a></li>
+                    <li><a href="orderhistory.html"><i class='bx bx-shopping-bag'></i> <span>Order History</span></a></li>
                 </ul>
 
                 <p class="section-label">Our Services</p>
                 <ul>
-                    <li><a href="#"><i class='bx bx-shopping-bag'></i> <span>Buy Account</span></a></li>
-                    <li><a href="#"><i class='bx bx-phone'></i> <span>Buy Number</span></a></li>
+                    <li><a href="buyaccount.html"><i class='bx bx-shopping-bag'></i> <span>Buy Account</span></a></li>                    <li><a href="#"><i class='bx bx-phone'></i> <span>Buy Number</span></a></li>
                     <li><a href=""><i class='bx bx-rocket'></i> <span>Boost Accounts</span></a></li>
                 </ul>
 
                 <p class="section-label">Account</p>
                 <ul>
-                    <li><a href="#"><i class='bx bx-cog'></i> <span>Settings</span></a></li>
-                    <li><a href="#" class="logout"><i class='bx bx-log-out'></i> <span>Logout</span></a></li>
+                    <li><a href="settings.html"><i class='bx bx-cog'></i> <span>Settings</span></a></li>
+                    <li><a href="refer.html"><i class='bx bx-user'></i> <span>Refer & Earn</span></a></li>
+                    <li><a href="explore.html" class="logout"><i class='bx bx-log-out'></i> <span>Logout</span></a></li>
                 </ul>
             </nav>
         </aside>
 
+        <main class="main-content" id="main-content">
+            <div class="page-header slide-down">
+                <div class="header-text">
+                    <h2>Secure Your Premium Social Asset</h2>
+                    <p>Acquire verified, high-quality accounts to amplify your influence instantly.</p>
+                </div>
+                <div class="header-badge">
+                    <i class='bx bxs-check-shield'></i> <span>100% Verification Warranty</span>
+                </div>
+            </div>
+
+            <div class="checkout-grid fade-in">
+                <div class="card checkout-form stagger-form">
+                    <h3 class="card-title"><i class='bx bx-store-alt'></i> Configure Your Order</h3>
+
+                    <div class="form-grid">
+                        <div class="input-group full-width">
+                            <label for="social-account"><i class='bx bx-link'></i> Social Account Type</label>
+                            <select id="social-account" name="social-account" required>
+                                <option value="" disabled selected>Choose a Social Platform...</option>
+                                <option value="facebook">Facebook</option>
+                                <option value="instagram">Instagram</option>
+                                <option value="twitter">Twitter (X)</option>
+                                <option value="tiktok">TikTok</option>
+                                <option value="linkedin">LinkedIn</option>
+                            </select>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="select-category"><i class='bx bx-purchase-tag-alt'></i> Specific
+                                Category</label>
+                            <select id="select-category" name="select-category" required disabled>
+                                <option value="" disabled selected>First select a platform...</option>
+                            </select>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="select-country"><i class='bx bx-map-pin'></i> Account Origin (Country)</label>
+                            <select id="select-country" name="select-country" required disabled>
+                                <option value="" disabled selected>First select a platform...</option>
+                            </select>
+                        </div>
+
+                        <div class="input-group stock-display">
+                            <label><i class='bx bx-package'></i> Available Stock</label>
+                            <div class="stock-box text-success" id="stock-value">---</div>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="quantity"><i class='bx bx-list-ol'></i> Quantity</label>
+                            <input type="number" id="quantity" name="quantity" min="1" value="1" required disabled>
+                        </div>
+
+                        <div class="input-group full-width">
+                            <label><i class='bx bx-file-blank'></i> Account Highlights (Description)</label>
+                            <div class="description-box" id="product-description">
+                                Select an account to view key details, aged status, and security features.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card order-summary stagger-form">
+                    <h3 class="card-title"><i class='bx bx-receipt'></i> Order Summary</h3>
+                    <div class="account-card" id="account-preview-card">
+                        <div class="account-icon-big" id="dynamic-social-icon">
+                            <i class='bx bx-question-mark'></i>
+                        </div>
+                        <div class="account-info-text">
+                            <h4 id="preview-type">Select Account</h4>
+                            <p id="preview-category">Pending selection...</p>
+                        </div>
+                    </div>
+
+                    <div class="summary-details">
+                        <div class="detail-row">
+                            <span>Unit Price</span>
+                            <strong class="price-val" id="unit-price-display">₦0.00</strong>
+                        </div>
+                        <div class="detail-row">
+                            <span>Quantity</span>
+                            <strong id="quantity-display">1</strong>
+                        </div>
+                        <div class="detail-row coupon-trigger" id="coupon-trigger">
+                            <span><i class='bx bx-gift'></i> Have a coupon?</span>
+                        </div>
+                        <div class="input-group coupon-input hidden" id="coupon-input-group">
+                            <input type="text" id="coupon-code" placeholder="Enter code...">
+                            <button class="btn btn-secondary apply-btn">Apply</button>
+                        </div>
+                        <hr>
+                        <div class="detail-row total-row">
+                            <span>Final Total</span>
+                            <strong class="total-price-val" id="total-price-display">₦0.00</strong>
+                        </div>
+                        <div class="balance-display detail-row">
+                            <span>Pay with Wallet (Balance)</span>
+                            <strong>#0.00</strong>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary full-width purchase-btn">
+                        <i class='bx bx-credit-card-front'></i> Complete Purchase
+                    </button>
+
+                    <div class="important-warnings">
+                        <h4><i class='bx bxs-error-alt'></i> Important Guidelines</h4>
+                        <ul>
+                            <li><i class='bx bxs-shield'></i> This account includes an active 2FA security layer.</li>
+                            <li><i class='bx bxs-time'></i> Delivery is instant but please allow up to 10 mins for data
+                                propagation.</li>
+                            <li><i class='bx bx-check-double'></i> Includes a 24-hour verification replacement
+                                guarantee.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
     <script src="./assets/js/buyaccount.js"></script>
 </body>
+
 </html>

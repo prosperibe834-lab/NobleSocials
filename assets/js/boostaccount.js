@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Close sidebar when clicking main content on mobile
     document.querySelector('.main-content').addEventListener('click', () => {
-        if(window.innerWidth <= 992) sidebar.classList.remove('active');
+        if (window.innerWidth <= 992) sidebar.classList.remove('active');
     });
 });
 
@@ -82,4 +82,62 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
+});
+
+
+// Main
+
+document.addEventListener('DOMContentLoaded', () => {
+    const catSelect = document.getElementById('category-select');
+    const commentLogic = document.getElementById('comment-logic-area');
+    const platSelect = document.getElementById('platform-select');
+    const platPreview = document.getElementById('platform-preview');
+    const qtyInput = document.getElementById('quantity-input');
+    const totalDisplay = document.getElementById('total-price');
+
+    // 1. Switch Icons based on platform
+    platSelect.addEventListener('change', () => {
+        const selectedOption = platSelect.options[platSelect.selectedIndex];
+        platPreview.className = `platform-icon ${selectedOption.dataset.icon}`;
+    });
+
+    // 2. Show/Hide Comment Logic
+    catSelect.addEventListener('change', () => {
+        if (catSelect.value === 'comments') {
+            commentLogic.style.display = 'block';
+        } else {
+            commentLogic.style.display = 'none';
+        }
+        updatePrice();
+    });
+
+    // 3. Price Calculation Logic
+    function updatePrice() {
+        const qty = parseInt(qtyInput.value) || 0;
+        let baseRate = 0.8; // default rate
+
+        // Category Adjustment
+        if (catSelect.value === 'comments') {
+            const cType = document.getElementById('comment-type').value;
+            baseRate = (cType === 'verified') ? 50.0 : 4.5;
+        } else if (catSelect.value === 'views') {
+            baseRate = 0.2;
+        }
+
+        // Quality Multiplier
+        const quality = document.querySelector('input[name="quality"]:checked').value;
+        const multiplier = (quality === 'high') ? 1.6 : 1.0;
+
+        const total = qty * baseRate * multiplier;
+        
+        // Update Price with smooth transition
+        totalDisplay.innerText = `#${total.toLocaleString(undefined, {minimumFractionDigits: 2})}`;
+    }
+
+    // Attach Listeners
+    qtyInput.addEventListener('input', updatePrice);
+    document.getElementById('comment-type').addEventListener('change', updatePrice);
+    document.querySelectorAll('input[name="quality"]').forEach(radio => {
+        radio.addEventListener('change', updatePrice);
+    });
 });

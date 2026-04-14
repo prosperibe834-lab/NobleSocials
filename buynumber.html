@@ -1,13 +1,15 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-        <link rel="stylesheet" href="./assets/css/buynumber.css">
+    <link rel="stylesheet" href="./assets/css/buynumber.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
+
 <body>
-     <div id="preloader">
+    <div id="preloader">
         <div class="loader">
             <div class="circle"></div>
             <p>Noble Social Hub</p>
@@ -40,7 +42,6 @@
             </div>
         </div>
     </nav>
-
     <div class="dashboard-container">
         <aside class="sidebar" id="sidebar">
             <div class="user-panel">
@@ -70,25 +71,124 @@
                     <li class="active"><a href="index.html"><i class='bx bx-home-alt'></i> <span>Dashboard</span></a>
                     </li>
                     <li><a href="addfund.html"><i class='bx bx-wallet'></i> <span>Add Fund</span></a></li>
-                    <li><a href="#"><i class='bx bx-history'></i> <span>Transactions</span></a></li>
-                    <li><a href=""><i class='bx bx-shopping-bag'></i> <span>Order History</span></a></li>
+                    <li><a href="transation.html"><i class='bx bx-history'></i> <span>Transactions</span></a></li>
+                    <li><a href="orderhistory.html"><i class='bx bx-shopping-bag'></i> <span>Order History</span></a></li>
                 </ul>
 
                 <p class="section-label">Our Services</p>
                 <ul>
-                    <li><a href="#"><i class='bx bx-shopping-bag'></i> <span>Buy Account</span></a></li>
-                    <li><a href="#"><i class='bx bx-phone'></i> <span>Buy Number</span></a></li>
-                    <li><a href=""><i class='bx bx-rocket'></i> <span>Boost Accounts</span></a></li>
+                    <li><a href="buyaccount.html"><i class='bx bx-shopping-bag'></i> <span>Buy Account</span></a></li>
+                    <li><a href="buynumber.html"><i class='bx bx-phone'></i> <span>Buy Number</span></a></li>
+                    <li><a href="boostaccount.html"><i class='bx bx-rocket'></i> <span>Boost Accounts</span></a></li>
                 </ul>
 
                 <p class="section-label">Account</p>
                 <ul>
-                    <li><a href="#"><i class='bx bx-cog'></i> <span>Settings</span></a></li>
-                    <li><a href="#" class="logout"><i class='bx bx-log-out'></i> <span>Logout</span></a></li>
+                    <li><a href="settings.html"><i class='bx bx-cog'></i> <span>Settings</span></a></li>
+                    <li><a href="refer.html"><i class='bx bx-user'></i> <span>Refer & Earn</span></a></li>
+                    <li><a href="explore.html" class="logout"><i class='bx bx-log-out'></i> <span>Logout</span></a></li>
                 </ul>
             </nav>
         </aside>
 
-    <script src="./assets/js/buynumber.js"></script>
+        <!-- Main -->
+        <main class="main-content" id="main-content">
+            <div class="page-header slide-down">
+                <div class="header-text">
+                    <h2>Global SMS Virtual Numbers</h2>
+                    <p>Select a region and service to receive instant verification codes.</p>
+                </div>
+            </div>
+
+            <div class="sms-store-grid fade-in">
+                <div class="card selection-card">
+                    <h3 class="section-title"><i class='bx bx-world'></i> 1. Choose Region & Country</h3>
+
+                    <div class="filter-bar">
+                        <div class="search-box">
+                            <i class='bx bx-search'></i>
+                            <input type="text" id="country-search" placeholder="Search 190+ countries...">
+                        </div>
+                        <div class="continent-tabs" id="region-filter">
+                            <button class="reg-btn active" data-region="all">All</button>
+                            <button class="reg-btn" data-region="europe">Europe</button>
+                            <button class="reg-btn" data-region="america">Americas</button>
+                            <button class="reg-btn" data-region="asia">Asia</button>
+                            <button class="reg-btn" data-region="oceania">Australia</button>
+                        </div>
+                    </div>
+
+                    <div class="country-grid" id="country-grid">
+                    </div>
+
+                    <h3 class="section-title mt-30"><i class='bx bx-chat'></i> 2. Select Chatting Platform</h3>
+
+                    <div class="service-picker-wrapper" id="service-picker">
+                        <div class="picker-trigger">
+                            <div class="trigger-content">
+                                <i class='bx bx-layer'></i>
+                                <span>Select Service (WhatsApp, Telegram...)</span>
+                            </div>
+                            <i class='bx bx-chevron-down'></i>
+                        </div>
+
+                        <div class="picker-dropdown">
+                            <div class="service-option" data-service="WhatsApp" data-price-mod="1.2">
+                                <i class='bx bxl-whatsapp' style="color: #25D366;"></i>
+                                <div class="s-info"><strong>WhatsApp</strong><span>Instant activation</span></div>
+                            </div>
+                            <div class="service-option" data-service="Telegram" data-price-mod="1.1">
+                                <i class='bx bxl-telegram' style="color: #0088cc;"></i>
+                                <div class="s-info"><strong>Telegram</strong><span>High success rate</span></div>
+                            </div>
+                            <div class="service-option" data-service="Viber" data-price-mod="1.0">
+                                <i class='bx bxl-viber' style="color: #7360f2;"></i>
+                                <div class="s-info"><strong>Viber</strong><span>Global availability</span></div>
+                            </div>
+                            <div class="service-option" data-service="WeChat" data-price-mod="1.3">
+                                <i class='bx bxl-messenger' style="color: #09b83e;"></i>
+                                <div class="s-info"><strong>WeChat</strong><span>Premium numbers</span></div>
+                            </div>
+                            <div class="service-option" data-service="Signal" data-price-mod="1.0">
+                                <i class='bx bxs-message-rounded-dots' style="color: #3a76f0;"></i>
+                                <div class="s-info"><strong>Signal</strong><span>Private & Secure</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card checkout-card">
+                    <div class="receipt-header">
+                        <div class="receipt-icon" id="res-icon"><i class='bx bx-broadcast'></i></div>
+                        <div>
+                            <h4 id="res-country">Select Country</h4>
+                            <p id="res-service">Select Service</p>
+                        </div>
+                    </div>
+
+                    <div class="pricing-list">
+                        <div class="price-item"><span>Server Speed</span><span class="val-green">Ultra-Fast</span></div>
+                        <div class="price-item"><span>Base Price</span><strong id="base-price">₦0.00</strong></div>
+                        <hr>
+                        <div class="price-item grand-total">
+                            <span>Final Total</span>
+                            <strong id="final-total">₦0.00</strong>
+                        </div>
+                    </div>
+
+                    <button class="btn-order-now" id="buy-btn" disabled>
+                        <i class='bx bx-zap'></i> Purchase Number
+                    </button>
+
+                    <div class="wallet-status">
+                        <i class='bx bx-wallet'></i>
+                        <span>Wallet Balance: <strong>₦0.00</strong></span>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <script src="./assets/js/buynumber.js"></script>
 </body>
+
 </html>

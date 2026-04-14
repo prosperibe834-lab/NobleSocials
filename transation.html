@@ -1,13 +1,15 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-        <link rel="stylesheet" href="./assets/css/transaction.css">
+    <link rel="stylesheet" href="./assets/css/transaction.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
+
 <body>
-     <div id="preloader">
+    <div id="preloader">
         <div class="loader">
             <div class="circle"></div>
             <p>Noble Social Hub</p>
@@ -67,28 +69,96 @@
             <nav class="side-links">
                 <p class="section-label">Main Menu</p>
                 <ul>
-                    <li class="active"><a href="index.html"><i class='bx bx-home-alt'></i> <span>Dashboard</span></a>
+                    <li><a href="index.html"><i class='bx bx-home-alt'></i> <span>Dashboard</span></a>
                     </li>
                     <li><a href="addfund.html"><i class='bx bx-wallet'></i> <span>Add Fund</span></a></li>
-                    <li><a href="transaction.html"><i class='bx bx-history'></i> <span>Transactions</span></a></li>
-                    <li><a href="orderhistory.html"><i class='bx bx-shopping-bag'></i> <span>Order History</span></a></li>
+                    <li><a href="transation.html"><i class='bx bx-history'></i>
+                        <span>Transactions</span></a>
+                    </li>
+                    <li><a href="orderhistory.html"><i class='bx bx-shopping-bag'></i> <span>Order History</span></a>
+                    </li>
                 </ul>
 
                 <p class="section-label">Our Services</p>
                 <ul>
-                    <li><a href="#"><i class='bx bx-shopping-bag'></i> <span>Buy Account</span></a></li>
-                    <li><a href="#"><i class='bx bx-phone'></i> <span>Buy Number</span></a></li>
-                    <li><a href=""><i class='bx bx-rocket'></i> <span>Boost Accounts</span></a></li>
+                    <li><a href="buyaccount.html"><i class='bx bx-shopping-bag'></i> <span>Buy Account</span></a></li>
+                    <li><a href="buynumber.html"><i class='bx bx-phone'></i> <span>Buy Number</span></a></li>
+                    <li><a href="boostaccount.html"><i class='bx bx-rocket'></i> <span>Boost Accounts</span></a></li>
                 </ul>
 
                 <p class="section-label">Account</p>
                 <ul>
-                    <li><a href="#"><i class='bx bx-cog'></i> <span>Settings</span></a></li>
-                    <li><a href="#" class="logout"><i class='bx bx-log-out'></i> <span>Logout</span></a></li>
+                    <li><a href="settings.html"><i class='bx bx-cog'></i> <span>Settings</span></a></li>
+                    <li><a href="refer.html"><i class='bx bx-user'></i> <span>Refer & Earn</span></a></li>
+                    <li><a href="explore.html" class="logout"><i class='bx bx-log-out'></i> <span>Logout</span></a></li>
                 </ul>
             </nav>
         </aside>
 
-    <script src="./assets/js/transation.js"></script>
+        <main class="main-content">
+            <div class="page-header">
+                <h2>Transactions History</h2>
+                <p>Track and manage your recent activities</p>
+            </div>
+    
+            <div class="transaction-card fade-in">
+                <div class="table-controls">
+                    <div class="tabs">
+                        <button class="tab-btn active">All</button>
+                        <button class="tab-btn">Deposit</button>
+                        <button class="tab-btn">Others</button>
+                    </div>
+                    <div class="search-box">
+                        <i class='bx bx-search'></i>
+                        <input type="text" placeholder="Search transactions...">
+                        <button class="search-btn">Search</button>
+                    </div>
+                </div>
+    
+                <div class="table-responsive">
+                    <table class="transaction-table">
+                        <thead>
+                            <tr>
+                                <th>Status</th>
+                                <th>Reference</th>
+                                <th>Source</th>
+                                <th>Description</th>
+                                <th>State</th>
+                                <th>Amount</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="slide-up" style="animation-delay: 0.1s;">
+                                <td><span class="type-badge credit">Credit</span></td>
+                                <td class="ref">Wallet_1775960297</td>
+                                <td>Bank Transfer</td>
+                                <td class="desc">Deposit</td>
+                                <td><span class="status-badge pending">Pending</span></td>
+                                <td class="amount">₦10,000.00</td>
+                                <td class="date">2 days ago</td>
+                            </tr>
+                            <tr class="slide-up" style="animation-delay: 0.2s;">
+                                <td><span class="type-badge credit">Credit</span></td>
+                                <td class="ref">Wallet_1775958832</td>
+                                <td>Korapay</td>
+                                <td class="desc">Deposit</td>
+                                <td><span class="status-badge pending">Pending</span></td>
+                                <td class="amount">₦5,000.00</td>
+                                <td class="date">2 days ago</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+    
+                <div class="table-footer">
+                    <p>Total Transactions: <strong>(2)</strong></p>
+                </div>
+            </div>
+        </main>
+        </div> 
+
+        <script src="./assets/js/transation.js"></script>
 </body>
+
 </html>

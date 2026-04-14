@@ -84,25 +84,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
+
 // Main
-document.addEventListener("DOMContentLoaded", () => {
-    // Tab Switching Logic for the main UI
-    const tabBtns = document.querySelectorAll('.tab-btn');
+function copyRefLink() {
+    const linkInput = document.getElementById("refLink");
+    const copyBtn = document.getElementById("copyBtn");
 
-    tabBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            // Remove active class from all
-            tabBtns.forEach(b => b.classList.remove('active'));
-            // Add active class to clicked button
-            btn.classList.add('active');
+    // Select the text
+    linkInput.select();
+    linkInput.setSelectionRange(0, 99999); // For mobile devices
 
-            // Add a tiny animation effect to the table to show it "reloading" data
-            const tableBody = document.querySelector('tbody');
-            tableBody.style.opacity = '0';
-            setTimeout(() => {
-                tableBody.style.opacity = '1';
-                tableBody.style.transition = 'opacity 0.4s ease-in';
-            }, 150);
-        });
+    // Copy to clipboard
+    navigator.clipboard.writeText(linkInput.value).then(() => {
+        // Visual Feedback
+        const originalContent = copyBtn.innerHTML;
+        copyBtn.innerHTML = "<i class='bx bx-check'></i> <span>Copied!</span>";
+        copyBtn.style.background = "#2ecc71";
+        copyBtn.style.color = "#fff";
+
+        setTimeout(() => {
+            copyBtn.innerHTML = originalContent;
+            copyBtn.style.background = "var(--gold)";
+            copyBtn.style.color = "var(--text)";
+        }, 2000);
     });
-});
+}

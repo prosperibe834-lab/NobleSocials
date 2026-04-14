@@ -55,54 +55,65 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let currentPage = window.location.pathname.split("/").pop();
 
-    // Debug (check console)
-    console.log("Current Page:", currentPage);
-
-    // Fix for empty path (like GitHub or localhost root)
     if (currentPage === "") {
         currentPage = "index.html";
     }
 
-    const navItems = document.querySelectorAll('.side-links li');
+    const navLinks = document.querySelectorAll('.side-links a');
 
-    navItems.forEach(item => {
-        const link = item.querySelector('a');
+    navLinks.forEach(link => {
+        let linkPage = link.getAttribute("href");
 
-        if (!link) return;
+        // Ignore empty or #
+        if (!linkPage || linkPage === "#") return;
 
-        let linkPage = link.getAttribute('href').split("/").pop();
-
-        console.log("Checking:", linkPage);
-
-        // Remove active first (important)
-        item.classList.remove('active');
+        linkPage = linkPage.split("/").pop();
 
         if (linkPage === currentPage) {
-            item.classList.add('active');
+            link.parentElement.classList.add("active");
+        } else {
+            link.parentElement.classList.remove("active");
         }
     });
 
 });
 
-// Main
-document.addEventListener("DOMContentLoaded", () => {
-    // Tab Switching Logic for the main UI
-    const tabBtns = document.querySelectorAll('.tab-btn');
+// Settings
+document.addEventListener('DOMContentLoaded', () => {
+    const tabs = document.querySelectorAll('.g-tab');
+    const panes = document.querySelectorAll('.tab-pane');
+    const saveBtn = document.getElementById('saveBtn');
 
-    tabBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            // Remove active class from all
-            tabBtns.forEach(b => b.classList.remove('active'));
-            // Add active class to clicked button
-            btn.classList.add('active');
+    // Tab Logic
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            const target = tab.dataset.content;
 
-            // Add a tiny animation effect to the table to show it "reloading" data
-            const tableBody = document.querySelector('tbody');
-            tableBody.style.opacity = '0';
-            setTimeout(() => {
-                tableBody.style.opacity = '1';
-                tableBody.style.transition = 'opacity 0.4s ease-in';
-            }, 150);
+            tabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+
+            panes.forEach(p => {
+                p.classList.remove('active');
+                if(p.id === target) p.classList.add('active');
+            });
         });
+    });
+
+    // Save Button Animation
+    saveBtn.addEventListener('click', () => {
+        const originalText = saveBtn.innerHTML;
+        saveBtn.innerHTML = "<i class='bx bx-loader-alt bx-spin'></i> Processing...";
+        saveBtn.style.pointerEvents = "none";
+
+        setTimeout(() => {
+            saveBtn.innerHTML = "<i class='bx bx-check-circle'></i> Settings Updated!";
+            saveBtn.style.background = "var(--teal)";
+
+            setTimeout(() => {
+                saveBtn.innerHTML = originalText;
+                saveBtn.style.background = "var(--primary)";
+                saveBtn.style.pointerEvents = "all";
+            }, 2000);
+        }, 1200);
     });
 });

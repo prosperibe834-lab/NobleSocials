@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Close sidebar when clicking main content on mobile
     document.querySelector('.main-content').addEventListener('click', () => {
-        if(window.innerWidth <= 992) sidebar.classList.remove('active');
+        if (window.innerWidth <= 992) sidebar.classList.remove('active');
     });
 });
 
@@ -82,4 +82,46 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
+});
+
+
+// Main
+document.addEventListener("DOMContentLoaded", () => {
+    const orderTabs = document.querySelectorAll('#order-tabs .tab-btn');
+    const totalCountDisplay = document.getElementById('total-count-display');
+
+    // Function to update the number of rows dynamically
+    const updateTotalCount = (activeView) => {
+        const rowCount = activeView.querySelectorAll('tbody tr').length;
+        totalCountDisplay.textContent = rowCount;
+    };
+
+    // Initialize count on page load based on the first active view
+    const initialView = document.querySelector('.active-view');
+    if (initialView) updateTotalCount(initialView);
+
+    // Tab Switching Logic
+    if (orderTabs.length > 0) {
+        orderTabs.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active classes
+                orderTabs.forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.table-container').forEach(view => {
+                    view.classList.remove('active-view');
+                    view.classList.add('hidden-view');
+                });
+
+                // Add active class to clicked button & target view
+                btn.classList.add('active');
+                const targetId = btn.getAttribute('data-target');
+                const activeView = document.getElementById(targetId);
+
+                activeView.classList.remove('hidden-view');
+                activeView.classList.add('active-view');
+
+                // Update total count
+                updateTotalCount(activeView);
+            });
+        });
+    }
 });

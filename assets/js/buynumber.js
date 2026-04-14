@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Close sidebar when clicking main content on mobile
     document.querySelector('.main-content').addEventListener('click', () => {
-        if(window.innerWidth <= 992) sidebar.classList.remove('active');
+        if (window.innerWidth <= 992) sidebar.classList.remove('active');
     });
 });
 
@@ -82,4 +82,91 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
+});
+
+// Main
+const countries = [
+    // Europe
+    { name: "United Kingdom", code: "gb", reg: "europe", price: 1500 },
+    { name: "Germany", code: "de", reg: "europe", price: 1800 },
+    { name: "France", code: "fr", reg: "europe", price: 1400 },
+    { name: "Netherlands", code: "nl", reg: "europe", price: 1600 },
+    // Americas
+    { name: "USA", code: "us", reg: "america", price: 1200 },
+    { name: "Canada", code: "ca", reg: "america", price: 1300 },
+    { name: "Brazil", code: "br", reg: "america", price: 900 },
+    // Asia
+    { name: "China", code: "cn", reg: "asia", price: 1100 },
+    { name: "India", code: "in", reg: "asia", price: 400 },
+    { name: "Japan", code: "jp", reg: "asia", price: 2000 },
+    // Australia/Oceania
+    { name: "Australia", code: "au", reg: "oceania", price: 2200 },
+    { name: "New Zealand", code: "nz", reg: "oceania", price: 2100 }
+];
+
+document.addEventListener('DOMContentLoaded', () => {
+    let selectedCountryPrice = 0;
+    let selectedServiceMod = 1;
+
+    const grid = document.getElementById('country-grid');
+    const search = document.getElementById('country-search');
+    const regionBtns = document.querySelectorAll('.reg-btn');
+    const picker = document.getElementById('service-picker');
+
+    function render(filter = "", region = "all") {
+        grid.innerHTML = "";
+        countries.forEach(c => {
+            const matchesSearch = c.name.toLowerCase().includes(filter.toLowerCase());
+            const matchesRegion = region === "all" || c.reg === region;
+
+            if (matchesSearch && matchesRegion) {
+                const item = document.createElement('div');
+                item.className = "country-card";
+                item.innerHTML = `<img src="https://flagcdn.com/w40/${c.code}.png"> <span>${c.name}</span>`;
+                item.onclick = () => {
+                    document.querySelectorAll('.country-card').forEach(x => x.classList.remove('active'));
+                    item.classList.add('active');
+                    selectedCountryPrice = c.price;
+                    document.getElementById('res-country').textContent = c.name;
+                    document.getElementById('res-icon').innerHTML = `<img src="https://flagcdn.com/w80/${c.code}.png" style="width:100%; border-radius:8px">`;
+                    calculate();
+                };
+                grid.appendChild(item);
+            }
+        });
+    }
+
+    function calculate() {
+        const base = selectedCountryPrice;
+        const total = base * selectedServiceMod;
+        document.getElementById('base-price').textContent = `₦${base.toLocaleString()}`;
+        document.getElementById('final-total').textContent = `₦${total.toLocaleString()}`;
+        document.getElementById('buy-btn').disabled = (total === 0);
+    }
+
+    // Search & Filter Events
+    search.addEventListener('input', (e) => render(e.target.value, document.querySelector('.reg-btn.active').dataset.region));
+
+    regionBtns.forEach(btn => {
+        btn.onclick = () => {
+            regionBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            render(search.value, btn.dataset.region);
+        }
+    });
+
+    // Service Picker Events
+    picker.onclick = () => picker.classList.toggle('open');
+    picker.querySelectorAll('.service-option').forEach(opt => {
+        opt.onclick = (e) => {
+            e.stopPropagation();
+            document.getElementById('res-service').textContent = opt.dataset.service;
+            picker.querySelector('.trigger-content span').textContent = opt.dataset.service;
+            selectedServiceMod = parseFloat(opt.dataset.priceMod);
+            picker.classList.remove('open');
+            calculate();
+        }
+    });
+
+    render();
 });

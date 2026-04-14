@@ -1,13 +1,15 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-        <link rel="stylesheet" href="./assets/css/orderhistory.css">
+    <link rel="stylesheet" href="./assets/css/orderhistory.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
+
 <body>
-     <div id="preloader">
+    <div id="preloader">
         <div class="loader">
             <div class="circle"></div>
             <p>Noble Social Hub</p>
@@ -67,28 +69,145 @@
             <nav class="side-links">
                 <p class="section-label">Main Menu</p>
                 <ul>
-                    <li class="active"><a href="index.html"><i class='bx bx-home-alt'></i> <span>Dashboard</span></a>
-                    </li>
+                    <li><a href="index.html"><i class='bx bx-home-alt'></i> <span>Dashboard</span></a></li>
+
                     <li><a href="addfund.html"><i class='bx bx-wallet'></i> <span>Add Fund</span></a></li>
-                    <li><a href="#"><i class='bx bx-history'></i> <span>Transactions</span></a></li>
-                    <li><a href=""><i class='bx bx-shopping-bag'></i> <span>Order History</span></a></li>
+
+                    <li><a href="transation.html"><i class='bx bx-history'></i> <span>Transactions</span></a></li>
+
+                    <li><a href="orderhistory.html"><i class='bx bx-shopping-bag'></i> <span>Order History</span></a>
+                    </li>
                 </ul>
 
                 <p class="section-label">Our Services</p>
                 <ul>
-                    <li><a href="#"><i class='bx bx-shopping-bag'></i> <span>Buy Account</span></a></li>
-                    <li><a href="#"><i class='bx bx-phone'></i> <span>Buy Number</span></a></li>
+                    <li><a href="buyaccount.html"><i class='bx bx-shopping-bag'></i> <span>Buy Account</span></a></li>
+                    <li><a href="buynumber.html"><i class='bx bx-phone'></i> <span>Buy Number</span></a></li>
                     <li><a href=""><i class='bx bx-rocket'></i> <span>Boost Accounts</span></a></li>
                 </ul>
 
                 <p class="section-label">Account</p>
                 <ul>
-                    <li><a href="#"><i class='bx bx-cog'></i> <span>Settings</span></a></li>
-                    <li><a href="#" class="logout"><i class='bx bx-log-out'></i> <span>Logout</span></a></li>
+                    <li><a href="settings.html"><i class='bx bx-cog'></i> <span>Settings</span></a></li>
+                    <li><a href="refer.html"><i class='bx bx-user'></i> <span>Refer & Earn</span></a></li>
+                    <li><a href="explore.html" class="logout"><i class='bx bx-log-out'></i> <span>Logout</span></a></li>
                 </ul>
             </nav>
         </aside>
 
-    <script src="./assets/js/orderhistory.js"></script>
+        <main class="main-content" id="main-content">
+            <div class="page-header slide-down">
+                <div class="header-text">
+                    <h2>Order History</h2>
+                    <p>Track your purchased accounts and SMS verifications</p>
+                </div>
+                <div class="total-badge">
+                    <span>Total Orders:</span>
+                    <strong id="total-count-display">0</strong>
+                </div>
+            </div>
+
+            <div class="transaction-card fade-in">
+                <div class="table-controls">
+                    <div class="tabs" id="order-tabs">
+                        <button class="tab-btn active" data-target="accounts-view">
+                            <i class='bx bx-user-circle'></i> Accounts
+                        </button>
+                        <button class="tab-btn" data-target="sms-view">
+                            <i class='bx bx-message-rounded-dots'></i> SMS
+                        </button>
+                    </div>
+
+                    <div class="search-box">
+                        <i class='bx bx-search'></i>
+                        <input type="text" placeholder="Search orders...">
+                    </div>
+                </div>
+
+                <div class="table-container active-view" id="accounts-view">
+                    <table class="modern-table">
+                        <thead>
+                            <tr>
+                                <th>Action</th>
+                                <th>Order Id</th>
+                                <th>Service</th>
+                                <th>Qty</th>
+                                <th>Price</th>
+                                <th>Status</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="stagger-row" style="--delay: 0.1s">
+                                <td><button class="btn-icon view"><i class='bx bx-show'></i> View</button></td>
+                                <td class="fw-bold text-primary">#ORD-88392</td>
+                                <td>Premium IG Account</td>
+                                <td class="fw-bold">1</td>
+                                <td class="fw-bold">₦15,000</td>
+                                <td><span class="badge success">Completed</span></td>
+                                <td class="text-muted">Oct 12, 2023</td>
+                            </tr>
+                            <tr class="stagger-row" style="--delay: 0.2s">
+                                <td><button class="btn-icon view"><i class='bx bx-show'></i> View</button></td>
+                                <td class="fw-bold text-primary">#ORD-88393</td>
+                                <td>Twitter Blue Verified</td>
+                                <td class="fw-bold">2</td>
+                                <td class="fw-bold">₦32,500</td>
+                                <td><span class="badge warning">Processing</span></td>
+                                <td class="text-muted">Oct 11, 2023</td>
+                            </tr>
+                            <tr class="stagger-row" style="--delay: 0.3s">
+                                <td><button class="btn-icon view"><i class='bx bx-show'></i> View</button></td>
+                                <td class="fw-bold text-primary">#ORD-88394</td>
+                                <td>Aged FB Profile</td>
+                                <td class="fw-bold">5</td>
+                                <td class="fw-bold">₦8,000</td>
+                                <td><span class="badge danger">Cancelled</span></td>
+                                <td class="text-muted">Oct 10, 2023</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="table-container hidden-view" id="sms-view">
+                    <table class="modern-table">
+                        <thead>
+                            <tr>
+                                <th>Order Id</th>
+                                <th>Phone Number</th>
+                                <th>Cost</th>
+                                <th>Code</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="stagger-row" style="--delay: 0.1s">
+                                <td class="fw-bold text-primary">#SMS-10492</td>
+                                <td class="fw-bold">+234 801 234 5678</td>
+                                <td class="fw-bold">₦50.00</td>
+                                <td><span class="code-chip success">829-104</span></td>
+                                <td><span class="badge success">Received</span></td>
+                                <td><button class="btn-icon copy"><i class='bx bx-copy'></i> Copy</button></td>
+                                <td class="text-muted">2 mins ago</td>
+                            </tr>
+                            <tr class="stagger-row" style="--delay: 0.2s">
+                                <td class="fw-bold text-primary">#SMS-10493</td>
+                                <td class="fw-bold">+1 (555) 902-1243</td>
+                                <td class="fw-bold">₦120.00</td>
+                                <td><span class="code-chip warning">Waiting...</span></td>
+                                <td><span class="badge warning">Pending</span></td>
+                                <td><button class="btn-icon danger"><i class='bx bx-x'></i> Cancel</button></td>
+                                <td class="text-muted">5 mins ago</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+
+        <script src="./assets/js/orderhistory.js"></script>
 </body>
+
 </html>
