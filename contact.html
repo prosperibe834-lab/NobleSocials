@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Contact Us | NobleSocials</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="./assets/css/contact.css">
+   
+</head>
+<body>
+    <div id="preloader">
+        <div class="loader">
+            <div class="circle"></div>
+            <p>Noble Social Hub</p>
+        </div>
+    </div>
+
+    <nav class="back-nav">
+        <a href="index.html" class="back-link">
+            <i class='bx bx-left-arrow-alt'></i> Back
+        </a>
+    </nav>
+
+    <header class="header">
+        <h1>Contact Us</h1>
+        <p>We’re here to help. Reach out to us anytime.</p>
+    </header>
+
+    <div class="container">
+        <div class="support-grid">
+            <div class="support-card" onclick="setSubject('Report a Problem')">
+                <i class='bx bx-bug-alt'></i>
+                <h3>Report a Problem</h3>
+                <p>Found a glitch? Let our team know.</p>
+            </div>
+            <div class="support-card" onclick="setSubject('Account Issue')">
+                <i class='bx bx-lock-alt'></i>
+                <h3>Account Issues</h3>
+                <p>Login trouble or profile security.</p>
+            </div>
+            <div class="support-card" onclick="setSubject('Payment Issue')">
+                <i class='bx bx-credit-card'></i>
+                <h3>Payments</h3>
+                <p>Billing, tokens, or refund status.</p>
+            </div>
+        </div>
+
+        <div class="contact-wrapper">
+            <div class="form-card">
+                <form id="contactForm" onsubmit="handleSubmit(event)">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" class="input-box" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" class="input-box" placeholder="john@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Subject</label>
+                        <select id="subjectSelect" required>
+                            <option value="">Select an inquiry type</option>
+                            <option value="General Inquiry">General Inquiry</option>
+                            <option value="Report a Problem">Report a Problem</option>
+                            <option value="Payment Issue">Payment Issue</option>
+                            <option value="Account Issue">Account Issue</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Message</label>
+                        <textarea rows="5" placeholder="How can we help you today?" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-send" id="submitBtn">
+                        <span id="btnText">Send Message</span>
+                        <i class='bx bx-paper-plane'></i>
+                    </button>
+                    <div id="success-msg">
+                        <i class='bx bxs-check-circle'></i> Message sent successfully!
+                    </div>
+                </form>
+            </div>
+
+            <div class="info-panel">
+                <h2 style="margin-bottom: 25px;">Quick Contact</h2>
+                <div class="info-item">
+                    <i class='bx bx-envelope'></i>
+                    <div>
+                        <h4>Email Us</h4>
+                        <p>support@noblesocials.com</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class='bx bx-phone-call'></i>
+                    <div>
+                        <h4>Call Support</h4>
+                        <p>+1 (555) 000-1234</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class='bx bx-map'></i>
+                    <div>
+                        <h4>Headquarters</h4>
+                        <p>123 Fintech Way, San Francisco, CA</p>
+                    </div>
+                </div>
+                <div style="margin-top: 50px; opacity: 0.6; font-size: 13px;">
+                    <p>Average response time: <b>&lt; 2 hours</b></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="chat-trigger" onclick="toggleChat()">
+        <i class='bx bx-message-dots'></i>
+    </div>
+
+    <div class="chat-box" id="chatBox">
+        <div class="chat-header">
+            <span style="font-weight: 700;">Noble AI Support</span>
+            <i class='bx bx-x' onclick="toggleChat()" style="cursor:pointer; font-size: 20px;"></i>
+        </div>
+        
+        <div class="chat-body" id="chatMessages">
+            <div class="msg msg-bot">
+                Hello! 👋 I'm Noble AI. How can I help you today?
+            </div>
+            <div id="botTyping" class="typing-indicator">Noble AI is typing...</div>
+        </div>
+
+        <div class="chat-footer">
+            <input type="text" id="chatInput" class="chat-input" placeholder="Type a message..." onkeypress="handleChatEnter(event)">
+            <button class="btn-send" onclick="sendChatMessage()" style="width:45px; height:40px; padding:0; border-radius:8px;">
+                <i class='bx bx-send'></i>
+            </button>
+        </div>
+    </div>
+
+   <script src="./assets/js/contact.js"></script>
+</body>
+</html>
