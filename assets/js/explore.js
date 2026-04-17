@@ -21,14 +21,6 @@ toggle.addEventListener("click", () => {
 });
 
 
-// ACTIVE LINK BASED ON PAGE
-const links = document.querySelectorAll(".nav-link");
-
-links.forEach(link => {
-    if (link.href === window.location.href) {
-        link.classList.add("active");
-    }
-});
 
                         // Main page
 document.addEventListener('DOMContentLoaded', () => {

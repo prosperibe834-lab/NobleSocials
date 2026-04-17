@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Secure Login | Pro Fintech</title>
+    <link rel="stylesheet" href="./assets/css/signin.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+   
+</head>
+<body>
+
+<div class="login-card">
+    <div class="header">
+        <div class="logo-box"><i class='bx bxs-bank'></i></div>
+        <h2 class="title">Secure Login</h2>
+        <p class="subtitle">Enter details to access your dashboard</p>
+    </div>
+
+    <div class="mode-switcher">
+        <button class="tab-btn active" onclick="showMode(this, 'pass-mode')">
+            <i class='bx bx-key'></i> Password
+        </button>
+        <button class="tab-btn" onclick="showMode(this, 'pin-mode')">
+            <i class='bx bx-grid-alt'></i> PIN
+        </button>
+        <button class="tab-btn" onclick="showMode(this, 'bio-mode')">
+            <i class='bx bx-face'></i> FaceID
+        </button>
+    </div>
+
+    <form onsubmit="return false;">
+
+        <div id="pass-mode" class="auth-section active">
+            <div class="form-group">
+                <label>Email Address</label>
+                <i class='bx bx-envelope field-icon'></i>
+                <input type="email" class="input-box" placeholder="example@mail.com">
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <i class='bx bx-lock-alt field-icon'></i>
+                <input type="password" id="pInput" class="input-box" placeholder="••••••••">
+                <i class='bx bx-hide eye-icon' id="eIcon" onclick="toggleView()"></i>
+            </div>
+            <button class="btn-submit">Sign In</button>
+        </div>
+
+        <div id="pin-mode" class="auth-section">
+            <div class="form-group">
+                <label>Email Address</label>
+                <i class='bx bx-envelope field-icon'></i>
+                <input type="email" class="input-box" placeholder="example@mail.com">
+            </div>
+            <div class="form-group">
+                <label>Enter 4-Digit PIN</label>
+                <div class="pin-container">
+                    <input type="text" inputmode="numeric" maxlength="1" class="pin-cell" onkeyup="moveTab(this, 'i2')">
+                    <input type="text" id="i2" inputmode="numeric" maxlength="1" class="pin-cell" onkeyup="moveTab(this, 'i3')">
+                    <input type="text" id="i3" inputmode="numeric" maxlength="1" class="pin-cell" onkeyup="moveTab(this, 'i4')">
+                    <input type="text" id="i4" inputmode="numeric" maxlength="1" class="pin-cell">
+                </div>
+            </div>
+            <button class="btn-submit">Login with PIN</button>
+        </div>
+
+        <div id="bio-mode" class="auth-section">
+            <div class="faceid-area" onclick="triggerBio()">
+                <i class='bx bx-face'></i>
+                <p style="margin-top:10px; font-weight:700; color:var(--primary-blue)">Scan Biometrics</p>
+                <p style="font-size:11px; color:var(--text-muted)">Place face in front of camera</p>
+            </div>
+        </div>
+
+    </form>
+
+    <div class="footer-links">
+        <p>New here? <a href="signup.html">Create an account</a></p>
+    </div>
+</div>
+
+<script src="./assets/js/signin.js"></script>
+</body>
+</html>

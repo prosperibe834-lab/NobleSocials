@@ -1,0 +1,158 @@
+:root {
+    --primary-blue: #1A3C74;
+    --accent-gold: #D4AF37;
+    --bg-white: #ffffff;
+    --input-bg: #f3f4f6;
+    --text-dark: #111827;
+    --text-muted: #6b7280;
+    --border-color: #e5e7eb;
+    --v6-teal: #1EC8B4;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    background-color: #f8fafc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 15px; /* Added padding to prevent card touching screen edges */
+}
+
+.login-card {
+    width: 100%;
+    max-width: 400px;
+    background: var(--bg-white);
+    border-radius: 30px;
+    padding: 35px 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    overflow: hidden; /* Added to clip any potential internal overflows */
+}
+
+.header { margin-bottom: 25px; }
+.logo-box {
+    width: 50px;
+    height: 50px;
+    background: var(--primary-blue);
+    color: white;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 12px;
+    font-size: 24px;
+}
+
+.title { font-size: 22px; font-weight: 800; color: var(--primary-blue); }
+.subtitle { color: var(--text-muted); font-size: 13px; margin-top: 4px; }
+
+/* Switcher Tabs */
+.mode-switcher {
+    display: flex;
+    background: var(--input-bg);
+    padding: 5px;
+    border-radius: 14px;
+    margin: 20px 0;
+}
+.tab-btn {
+    flex: 1;
+    padding: 10px 5px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 12px;
+    color: var(--text-muted);
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    transition: 0.3s;
+}
+.tab-btn.active {
+    background: white;
+    color: var(--primary-blue);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+/* Form Sections */
+.auth-section { display: none; animation: fadeIn 0.3s ease; }
+.auth-section.active { display: block; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+.form-group { text-align: left; margin-bottom: 18px; position: relative; }
+label { display: block; font-size: 11px; font-weight: 700; color: var(--primary-blue); margin-bottom: 6px; text-transform: uppercase; }
+
+.input-box {
+    width: 100%;
+    padding: 14px 14px 14px 42px;
+    background: var(--input-bg);
+    border: 2px solid transparent;
+    border-radius: 14px;
+    font-size: 15px;
+    outline: none;
+    transition: 0.3s;
+}
+.input-box:focus { border-color: var(--primary-blue); background: white; }
+
+.field-icon { position: absolute; left: 14px; top: 32px; font-size: 18px; color: var(--text-muted); }
+.eye-icon { position: absolute; right: 14px; top: 32px; font-size: 18px; color: var(--text-muted); cursor: pointer; padding: 5px; }
+
+/* --- FIXED PIN GRID (NO OVERFLOW) --- */
+.pin-container { 
+    display: flex; 
+    justify-content: space-between; 
+    gap: 10px; 
+    width: 100%; 
+    margin-top: 5px;
+}
+.pin-cell {
+    flex: 1; /* Automatically divides space into 4 equal parts */
+    height: 55px;
+    background: var(--input-bg);
+    border: 2px solid transparent;
+    border-radius: 12px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--primary-blue);
+    outline: none;
+    min-width: 0; /* Important for flex shrink */
+}
+.pin-cell:focus { border-color: var(--v6-teal); background: white; }
+
+/* FaceID Area */
+.faceid-area {
+    padding: 30px 15px;
+    border: 2px dashed var(--border-color);
+    border-radius: 20px;
+    margin: 15px 0;
+    cursor: pointer;
+}
+.faceid-area i { font-size: 50px; color: var(--v6-teal); animation: pulse 1.5s infinite; }
+@keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+
+.btn-submit {
+    width: 100%;
+    padding: 16px;
+    background: var(--primary-blue);
+    color: white;
+    border: none;
+    border-radius: 14px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.footer-links { margin-top: 20px; font-size: 13px; color: var(--text-muted); }
+.footer-links a { color: var(--primary-blue); text-decoration: none; font-weight: 700; }

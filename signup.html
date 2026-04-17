@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Create Account | Pro Fintech</title>
+    <link rel="stylesheet" href="./assets/css/signup.css">
+</head>
+<body>
+
+<div class="signup-card">
+    <div class="header">
+        <h2 class="title">Create Account</h2>
+        <p class="subtitle">Join thousands of smart users today.</p>
+    </div>
+
+    <form onsubmit="return false;">
+        <div class="form-group">
+            <label>Mobile Number</label>
+            <div class="phone-row">
+                <div class="country-select-btn" id="cTrigger" onclick="toggleC(event)">
+                    <span id="f-view">🇳🇬</span>
+                    <span id="c-view">+234</span>
+                    <span style="font-size: 8px;">▼</span>
+                    <div class="dropdown-list" id="cMenu">
+                        <div class="list-item" onclick="setComp('🇳🇬', '+234')">🇳🇬 Nigeria (+234)</div>
+                        <div class="list-item" onclick="setComp('🇺🇸', '+1')">🇺🇸 USA (+1)</div>
+                    </div>
+                </div>
+                <input type="tel" inputmode="numeric" class="input-box" placeholder="810 000 0000">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password" id="pass1" class="input-box" placeholder="••••••••">
+            <div class="eye-toggle" onclick="view('pass1')">👁️</div>
+        </div>
+
+        <div class="form-group">
+            <label>Confirm Password</label>
+            <input type="password" id="pass2" class="input-box" placeholder="••••••••">
+            <div class="eye-toggle" onclick="view('pass2')">👁️</div>
+        </div>
+
+        <div class="form-group">
+            <label>Secure Transaction PIN</label>
+            <div class="pin-row">
+                <input type="text" inputmode="numeric" maxlength="1" class="pin-box" onkeyup="move(this, 'n2')">
+                <input type="text" id="n2" inputmode="numeric" maxlength="1" class="pin-box" onkeyup="move(this, 'n3')">
+                <input type="text" id="n3" inputmode="numeric" maxlength="1" class="pin-box" onkeyup="move(this, 'n4')">
+                <input type="text" id="n4" inputmode="numeric" maxlength="1" class="pin-box">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Referral Code (Optional)</label>
+            <input type="text" class="input-box" placeholder="Ex: JOIN2024">
+        </div>
+
+        <button class="btn-reg">Register Now</button>
+    </form>
+
+    <p class="footer">Already a member? <a href="signin.html">Sign In</a></p>
+</div>
+
+<script src="./assets/js/signup.js"></script>
+</body>
+</html>

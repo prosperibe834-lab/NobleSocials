@@ -1,0 +1,139 @@
+:root {
+    --primary-blue: #1A3C74;
+    --accent-gold: #D4AF37;
+    --bg-white: #ffffff;
+    --input-bg: #f3f4f6;
+    --text-dark: #111827;
+    --text-muted: #6b7280;
+    --border-color: #e5e7eb;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', -apple-system, sans-serif;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    background-color: #f9fafb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 15px;
+}
+
+.signup-card {
+    width: 100%;
+    max-width: 400px; /* Slightly tighter for better mobile focus */
+    background: var(--bg-white);
+    border-radius: 28px;
+    padding: 32px 24px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+}
+
+.header { margin-bottom: 24px; }
+.title { font-size: 24px; font-weight: 800; color: var(--primary-blue); letter-spacing: -0.5px; }
+.subtitle { color: var(--text-muted); font-size: 14px; margin-top: 4px; }
+
+.form-group { margin-bottom: 18px; position: relative; }
+label { display: block; font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--primary-blue); margin-bottom: 6px; letter-spacing: 0.5px; }
+
+.input-box {
+    width: 100%;
+    padding: 14px 16px;
+    background: var(--input-bg);
+    border: 2px solid transparent;
+    border-radius: 14px;
+    color: var(--text-dark);
+    font-size: 15px;
+    outline: none;
+    transition: 0.2s;
+}
+
+.input-box:focus { border-color: var(--primary-blue); background: var(--bg-white); }
+
+/* Eye Icon Position */
+.eye-toggle {
+    position: absolute;
+    right: 14px;
+    top: 34px;
+    cursor: pointer;
+    color: var(--text-muted);
+    padding: 5px;
+}
+
+/* Fixed Country Selector */
+.phone-row { display: flex; gap: 10px; }
+
+.country-select-btn {
+    background: var(--input-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 12px;
+    cursor: pointer;
+    min-width: 100px;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.dropdown-list {
+    position: absolute;
+    top: 62px;
+    left: 0;
+    background: white;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    width: 180px;
+    display: none;
+    z-index: 100;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.dropdown-list.show { display: block; }
+.list-item { padding: 12px; display: flex; align-items: center; gap: 10px; cursor: pointer; }
+.list-item:hover { background: #f8fafc; }
+
+/* FIXED PIN: Flex-box avoids overflow */
+.pin-row { 
+    display: flex; 
+    justify-content: space-between; 
+    gap: 8px; /* Reduced gap to keep inside card */
+}
+
+.pin-box {
+    flex: 1; /* Makes all boxes equal width */
+    max-width: 60px; /* Limits size on large screens */
+    height: 55px;
+    background: var(--input-bg);
+    border: 2px solid transparent;
+    border-radius: 12px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--primary-blue);
+    outline: none;
+}
+
+.pin-box:focus { border-color: var(--accent-gold); background: white; }
+
+.btn-reg {
+    width: 100%;
+    padding: 16px;
+    margin-top: 10px;
+    background: var(--primary-blue);
+    color: white;
+    border: none;
+    border-radius: 16px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.footer { text-align: center; margin-top: 20px; font-size: 13px; color: var(--text-muted); }
+.footer a { color: var(--primary-blue); text-decoration: none; font-weight: 700; }
