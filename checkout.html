@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirm Order | Noble Social Hub</title>
+    <link rel="stylesheet" href="./assets/css/boostaccount.css"> <link rel="stylesheet" href="./assets/css/checkout.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body class="dark-mode-supported">
+    
+    <main class="main-content">
+        <div class="checkout-wrapper animate-fade">
+            <div class="checkout-card">
+                <div class="checkout-header">
+                    <div class="icon-circle">
+                        <i class='bx bx-receipt'></i>
+                    </div>
+                    <h3>Order Summary</h3>
+                    <p>Please review your order details before final payment.</p>
+                </div>
+
+                <div class="summary-details">
+                    <div class="detail-item">
+                        <span>Platform</span>
+                        <span class="val"><i class='bx bxl-instagram-alt'></i> Instagram</span>
+                    </div>
+                    <div class="detail-item">
+                        <span>Service</span>
+                        <span class="val">High Quality Followers</span>
+                    </div>
+                    <div class="detail-item">
+                        <span>Target Link</span>
+                        <span class="val link-text">https://social.com/user...</span>
+                    </div>
+                    <div class="detail-item">
+                        <span>Quantity</span>
+                        <span class="val">1,500</span>
+                    </div>
+                    
+                    <div class="price-breakdown">
+                        <div class="price-row">
+                            <span>Subtotal</span>
+                            <span>#1,200.00</span>
+                        </div>
+                        <div class="price-row">
+                            <span>Service Fee</span>
+                            <span>#50.00</span>
+                        </div>
+                        <div class="price-row total-row">
+                            <span>Total Amount</span>
+                            <span class="final-price">#1,250.00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="wallet-status">
+                    <div class="wallet-info">
+                        <i class='bx bx-wallet'></i>
+                        <div>
+                            <small>Current Balance</small>
+                            <p>#5,000.00</p>
+                        </div>
+                    </div>
+                    <div class="status-badge success">Funds Available</div>
+                </div>
+
+                <div class="checkout-actions">
+                    <button class="btn-secondary" onclick="window.history.back()">Go Back</button>
+                    <button class="btn-primary" id="confirm-pay-btn">
+                        Confirm & Pay <i class='bx bx-right-arrow-alt'></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="processing-modal" class="modal">
+        <div class="modal-content">
+            <div class="loader-ring"></div>
+            <h3>Processing Order...</h3>
+            <p>Deducting funds and initializing boost.</p>
+        </div>
+    </div>
+
+    <script src="./assets/js/checkout.js"></script>
+</body>
+</html>

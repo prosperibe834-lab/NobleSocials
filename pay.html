@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>NobleSocials | Add Funds</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="./assets/css/pay.css">
+</head>
+<body>
+
+    <div class="payment-card">
+        <div id="setup-view">
+            <h2 class="modal-title">Add Funds</h2>
+
+            <div class="amount-box">
+                <label class="label-xs">Amount to Fund</label>
+                <div class="amount-row">
+                    <span>₦</span>
+                    <input type="text" id="mainAmount" class="amount-field" inputmode="numeric" placeholder="5,000">
+                </div>
+            </div>
+
+            <label class="label-xs" style="color: #666; margin-bottom: 12px;">Select Payment Mode</label>
+            <div class="method-grid">
+                <div class="method-item" onclick="setMode(this, 'card')">
+                    <i class='bx bx-credit-card'></i>
+                    <span>Pay with Card</span>
+                </div>
+                <div class="method-item" onclick="setMode(this, 'bank')">
+                    <i class='bx bx-landmark'></i>
+                    <span>Bank Transfer</span>
+                </div>
+                <div class="method-item" style="grid-column: span 2;" onclick="setMode(this, 'fw')">
+                    <i class='bx bx-flash'></i>
+                    <span>Flutterwave Portal</span>
+                </div>
+            </div>
+
+            <button class="btn-pay" id="continueBtn" disabled onclick="handleContinue()">Proceed</button>
+        </div>
+
+        <div class="portal-overlay" id="portal">
+            <div class="portal-header">
+                <i class='bx bx-arrow-back' style="cursor:pointer; font-size:24px;" onclick="closePortal()"></i>
+                <div class="fw-brand"><i class='bx bxs-bolt-circle'></i> flutterwave</div>
+                <div style="width:24px;"></div>
+            </div>
+
+            <div class="portal-body">
+                <div class="portal-amt">
+                    <p>Paying NobleSocials</p>
+                    <h3 id="portalAmtDisplay">₦0.00</h3>
+                </div>
+
+                <div id="portal-methods">
+                    <p style="font-size: 11px; font-weight: 800; color: #999; margin-bottom: 15px;">CHOOSE A CHANNEL</p>
+                    <div class="portal-opt" onclick="openChannel('card')">
+                        <i class='bx bxs-credit-card'></i>
+                        <div><b>Card Payment</b><span>Visa, Mastercard, Verve</span></div>
+                    </div>
+                    <div class="portal-opt" onclick="openChannel('bank')">
+                        <i class='bx bxs-bank'></i>
+                        <div><b>Bank Transfer</b><span>Instant verification</span></div>
+                    </div>
+                </div>
+
+                <div id="channel-card" style="display:none;">
+                    <input type="text" class="amount-box" style="width:100%; padding:15px; margin-bottom:10px;" placeholder="Card Number" inputmode="numeric">
+                    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
+                        <input type="text" class="amount-box" placeholder="MM/YY" inputmode="numeric" style="padding:15px;">
+                        <input type="text" class="amount-box" placeholder="CVV" inputmode="numeric" style="padding:15px;">
+                    </div>
+                    <button class="btn-pay" style="background:var(--fw-orange); margin-top:15px;" onclick="complete()">Pay Now</button>
+                </div>
+
+                <div id="channel-bank" style="display:none;">
+                    <div class="bank-details-card" id="bankCard" style="display:block;">
+                        <p style="font-size:11px; opacity:0.7;">TRANSFER THE EXACT AMOUNT TO:</p>
+                        <h2 style="margin: 10px 0;">₦<span class="final-amt"></span></h2>
+                        <p style="font-size:14px; font-weight:800; color:var(--primary);">MONIEPOINT MFB</p>
+                        <p style="font-size:20px; font-weight:900; letter-spacing:1px; margin:5px 0;" onclick="copyAccount('8123456789')">8123456789 <i class='bx bx-copy'></i></p>
+                        <span class="timer-text">Valid for: <span id="clock">10:00</span></span>
+                    </div>
+                    <button class="btn-pay" style="margin-top:20px;" onclick="complete()">I Have Made Payment</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast" class="toast">Account Number Copied! ✅</div>
+
+   <script src="./assets/js/pay.js"></script>
+</body>
+</html>

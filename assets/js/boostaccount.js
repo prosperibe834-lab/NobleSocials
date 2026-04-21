@@ -140,4 +140,29 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('input[name="quality"]').forEach(radio => {
         radio.addEventListener('change', updatePrice);
     });
+
+    // 
+
+    // Find the Place Order button listener and update it to this:
+document.getElementById('boost-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    // 1. Get the current price from the H2 tag
+    const finalPrice = document.getElementById('total-price').innerText;
+
+    // 2. Collect all the data
+    const orderData = {
+        platform: document.getElementById('platform-select').value,
+        category: document.getElementById('category-select').value,
+        quantity: document.getElementById('quantity-input').value,
+        link: document.querySelector('input[type="url"]').value,
+        totalPrice: finalPrice
+    };
+
+    // 3. Save it 
+    localStorage.setItem('pendingOrder', JSON.stringify(orderData));
+
+    // 4. Redirect
+    window.location.href = "checkout.html";
+});
 });

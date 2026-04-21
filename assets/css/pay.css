@@ -1,0 +1,218 @@
+:root {
+    --primary: #1A3C74;
+    --gold: #D4AF37;
+    --white: #ffffff;
+    --bg: #F8F9FA;
+    --text-dark: #111827;
+    --fw-orange: #F5A623;
+    --border: #e5e7eb;
+    --success: #10b981;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; -webkit-tap-highlight-color: transparent; }
+body { background: #e2e8f0; display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 20px; }
+
+/* --- Main Modal --- */
+.payment-card {
+    background: var(--white);
+    width: 100%;
+    max-width: 420px;
+    border-radius: 30px;
+    padding: 30px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+    animation: slideUp 0.4s ease-out;
+}
+
+@keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+.modal-title { color: var(--primary); font-size: 22px; font-weight: 800; text-align: center; margin-bottom: 25px; }
+
+/* --- Amount Input Section --- */
+.amount-box {
+    background: #F9FAFB;
+    border: 2px solid var(--border);
+    border-radius: 18px;
+    padding: 20px;
+    margin-bottom: 25px;
+    transition: 0.3s;
+}
+.amount-box:focus-within { border-color: var(--primary); background: #fff; }
+.label-xs { font-size: 11px; font-weight: 800; color: var(--primary); text-transform: uppercase; margin-bottom: 5px; display: block; }
+.amount-row { display: flex; align-items: center; gap: 10px; }
+.amount-row span { font-size: 24px; font-weight: 700; }
+/* inputmode="numeric" forces number keyboard on mobile */
+.amount-field { width: 100%; border: none; background: transparent; outline: none; font-size: 26px; font-weight: 800; }
+
+/* --- Method Grid --- */
+.method-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 25px; }
+.method-item {
+    border: 2.5px solid var(--border);
+    border-radius: 16px;
+    padding: 18px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.method-item i { font-size: 28px; color: var(--text-dark); margin-bottom: 8px; display: block; }
+.method-item span { font-size: 12px; font-weight: 700; color: #666; }
+.method-item.active { border-color: var(--primary); background: #f0f4fb; }
+.method-item.active i, .method-item.active span { color: var(--primary); }
+
+/* --- Action Button --- */
+.btn-pay {
+    width: 100%; padding: 18px; background: var(--primary); color: white;
+    border: none; border-radius: 16px; font-weight: 700; font-size: 16px;
+    cursor: pointer; transition: 0.3s;
+}
+.btn-pay:hover { background: #112952; }
+.btn-pay:disabled { background: #cbd5e1; cursor: not-allowed; }
+
+/* --- FLUTTERWAVE PORTAL OVERLAY --- */
+.portal-overlay {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: white; z-index: 100; display: none; flex-direction: column;
+    animation: portalSlide 0.4s ease;
+}
+@keyframes portalSlide { from { transform: translateY(100%); } to { transform: translateY(0); } }
+
+.portal-header { padding: 20px; border-bottom: 1px solid #eee; display: flex; align-items: center; justify-content: space-between; }
+.fw-brand { color: var(--fw-orange); font-weight: 900; font-size: 16px; display: flex; align-items: center; gap: 5px; }
+
+.portal-body { padding: 20px; flex: 1; overflow-y: auto; }
+.portal-amt { text-align: center; margin-bottom: 25px; }
+.portal-amt h3 { font-size: 24px; font-weight: 800; }
+.portal-amt p { font-size: 12px; color: #888; }
+
+/* Portal Method Options */
+.portal-opt { display: flex; align-items: center; gap: 15px; padding: 18px; border: 1.5px solid #eee; border-radius: 15px; margin-bottom: 12px; cursor: pointer; transition: 0.2s; }
+.portal-opt:hover { border-color: var(--fw-orange); background: #fffcf5; }
+.portal-opt i { font-size: 22px; color: #555; }
+.portal-opt div b { font-size: 14px; display: block; }
+.portal-opt div span { font-size: 11px; color: #999; }
+
+/* --- Bank Details View (With Timer) --- */
+.bank-details-card { background: #f0f7ff; border: 1.5px dashed #2196F3; border-radius: 20px; padding: 25px; text-align: center; display: none; }
+.timer-text { color: #ef4444; font-weight: 800; font-size: 14px; margin-top: 15px; display: block; }
+
+/* Toast */
+.toast { position: fixed; bottom: -50px; left: 50%; transform: translateX(-50%); background: var(--success); color: white; padding: 12px 25px; border-radius: 50px; font-size: 13px; font-weight: 700; transition: 0.4s; z-index: 1000; }
+.toast.show { bottom: 30px; }
+
+/* ================= RESPONSIVE FIX ================= */
+
+/* Small phones */
+@media (max-width: 480px) {
+
+body {
+padding: 10px;
+align-items: flex-start;
+}
+
+.payment-card {
+max-width: 100%;
+padding: 20px;
+border-radius: 20px;
+}
+
+.modal-title {
+font-size: 18px;
+}
+
+.amount-box {
+padding: 15px;
+}
+
+.amount-row span {
+font-size: 18px;
+}
+
+.amount-field {
+font-size: 20px;
+}
+
+/* Stack payment methods */
+.method-grid {
+grid-template-columns: 1fr;
+gap: 10px;
+}
+
+.method-item {
+padding: 14px;
+}
+
+.method-item i {
+font-size: 22px;
+}
+
+.btn-pay {
+padding: 14px;
+font-size: 14px;
+}
+
+/* FULLSCREEN MODAL ON MOBILE */
+.portal-overlay {
+position: fixed;
+inset: 0;
+width: 100%;
+height: 100%;
+border-radius: 0;
+}
+
+.portal-header {
+padding: 15px;
+}
+
+.portal-body {
+padding: 15px;
+}
+
+.portal-amt h3 {
+font-size: 20px;
+}
+
+.portal-opt {
+padding: 14px;
+gap: 10px;
+}
+
+.portal-opt i {
+font-size: 20px;
+}
+
+.bank-details-card {
+padding: 20px;
+}
+
+.bank-details-card h2 {
+font-size: 20px;
+}
+}
+
+
+/* Tablets */
+@media (min-width: 481px) and (max-width: 768px) {
+
+.payment-card {
+max-width: 500px;
+padding: 25px;
+}
+
+.method-grid {
+grid-template-columns: 1fr 1fr;
+}
+
+.portal-body {
+padding: 18px;
+}
+}
+
+
+/* Large screens */
+@media (min-width: 1024px) {
+
+.payment-card {
+max-width: 450px;
+}
+}

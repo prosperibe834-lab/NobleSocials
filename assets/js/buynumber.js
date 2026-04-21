@@ -169,4 +169,32 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     render();
+
+                                        // This handles the "Purchase" button click
+
+    // This handles the "Purchase" button click
+    document.getElementById('buy-btn').addEventListener('click', function () {
+        // 1. Get the names of what the user selected from the screen
+        const countryName = document.getElementById('res-country').textContent;
+        const serviceName = document.getElementById('res-service').textContent;
+
+        // 2. Look for the flag image we displayed and get its code (like 'us' or 'gb')
+        const flagImg = document.getElementById('res-icon').querySelector('img');
+        let flagCode = "us"; // default to US if something goes wrong
+        if (flagImg) {
+            // This extracts 'us' from 'https://flagcdn.com/w80/us.png'
+            flagCode = flagImg.src.split('/').pop().split('.')[0];
+        }
+
+        // 3. SAVE these to the browser's "Sticky Note" (LocalStorage)
+        localStorage.setItem('selectedCountry', countryName);
+        localStorage.setItem('selectedService', serviceName);
+        localStorage.setItem('selectedFlag', flagCode);
+
+        // 4. NOW move to the activation page
+        window.location.href = "activation.html";
+    });
+    
 });
+
+

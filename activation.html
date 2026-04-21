@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activation - Noble Social Hub</title>
+    <link rel="stylesheet" href="./assets/css/activation.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body class="dark-mode">
+
+    <div class="activation-container">
+        <nav class="activation-nav animate-slide-down">
+            <button class="back-btn" onclick="window.history.back()">
+                <i class='bx bx-left-arrow-alt'></i> Back to Store
+            </button>
+            <div class="brand-small">Noble Social Hub</div>
+        </nav>
+
+        <main class="activation-content">
+            <div class="order-summary-card animate-fade-in">
+                <div class="summary-item">
+                    <img id="active-flag" src="" alt="flag">
+                    <div>
+                        <h4 id="active-country">Loading...</h4>
+                        <span>Region: International</span>
+                    </div>
+                </div>
+                <div class="divider"></div>
+                <div class="summary-item">
+                    <div class="service-icon-bg">
+                        <i id="active-service-icon" class='bx bx-loader-alt bx-spin'></i>
+                    </div>
+                    <div>
+                        <h4 id="active-service-name">Loading...</h4>
+                        <span>Service Platform</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="main-grid">
+                <div class="card glass-card animate-slide-up">
+                    <div class="timer-section">
+                        <svg class="timer-svg" viewBox="0 0 100 100">
+                            <circle class="timer-bg" cx="50" cy="50" r="45"></circle>
+                            <circle class="timer-bar" id="timer-bar" cx="50" cy="50" r="45"></circle>
+                        </svg>
+                        <div class="timer-text">
+                            <span id="time-display">19:59</span>
+                        </div>
+                    </div>
+
+                    <div class="number-display">
+                        <label>VIRTUAL NUMBER</label>
+                        <div class="number-row">
+                            <h2 id="display-number">+1 (202) 555-0125</h2>
+                            <button class="icon-copy" onclick="copyText('display-number')">
+                                <i class='bx bx-copy'></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <p class="warning-text"><i class='bx bx-info-circle'></i> This number expires once the timer hits zero.</p>
+                </div>
+
+                <div class="card glass-card animate-slide-up" style="animation-delay: 0.1s;">
+                    <div id="sms-waiting">
+                        <div class="pulse-container">
+                            <div class="pulse-ring"></div>
+                            <i class='bx bx-message-rounded-dots'></i>
+                        </div>
+                        <h3>Waiting for SMS...</h3>
+                        <p>Request the code on your app now.</p>
+                    </div>
+
+                    <div id="sms-received" style="display: none;">
+                        <div class="success-badge">CODE RECEIVED</div>
+                        <h1 id="otp-code">------</h1>
+                        <button class="btn-copy-otp" onclick="copyText('otp-code')">
+                            <i class='bx bx-copy-alt'></i> Copy Code
+                        </button>
+                    </div>
+
+                    <div class="action-footer">
+                        <button class="btn-secondary"><i class='bx bx-refresh'></i> Refresh</button>
+                        <button class="btn-danger"><i class='bx bx-trash'></i> Cancel Order</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="./assets/js/activation.js"></script>
+</body>
+</html>

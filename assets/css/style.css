@@ -116,6 +116,17 @@ body {
     color: #1e293b;
 }
 
+@media (max-width: 600px) {
+    .notif-panel {
+        position: fixed;
+        top: 80px; /* same as navbar height */
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
+        max-width: 350px;
+        right: unset;
+    }
+}
 /* SHOW */
 .notif-panel.show {
     display: flex;
@@ -126,6 +137,12 @@ body {
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(-10px); }
     to { opacity: 1; transform: translateY(0); }
+}
+
+.brand img {
+    height: 60px; /* or 70px max */
+    max-height: 100%;
+    object-fit: contain;
 }
 
 /* KEEP YOUR ORIGINAL STYLING BELOW (UNCHANGED) */
