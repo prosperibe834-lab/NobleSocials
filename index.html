@@ -7,6 +7,7 @@
     <title>Noble Social Hub Dashboard</title>
     <link rel="stylesheet" href="./assets/css/style.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 
 <body class="light-mode">
@@ -208,19 +209,19 @@
             </div>
 
             <div class="categories-grid">
-                <div class="cat-card fb slide-up" style="--delay: 0.4s">
+                <div data-aos="fade-down-right" class="cat-card fb slide-up" style="--delay: 0.4s">
                     <div class="cat-icon"><i class='bx bxl-facebook-circle'></i></div>
                     <span>Facebook</span>
                 </div>
-                <div class="cat-card ig slide-up" style="--delay: 0.5s">
+                <div data-aos="zoom-in" class="cat-card ig slide-up" style="--delay: 0.5s">
                     <div class="cat-icon"><i class='bx bxl-instagram-alt'></i></div>
                     <span>Instagram</span>
                 </div>
-                <div class="cat-card yt slide-up" style="--delay: 0.6s">
+                <div data-aos="zoom-in" class="cat-card yt slide-up" style="--delay: 0.6s">
                     <div class="cat-icon"><i class='bx bxl-youtube'></i></div>
                     <span>Youtube</span>
                 </div>
-                <div class="cat-card tk slide-up" style="--delay: 0.7s">
+                <div data-aos="fade-down-left" class="cat-card tk slide-up" style="--delay: 0.7s">
                     <div class="cat-icon"><i class='bx bxl-tiktok'></i></div>
                     <span>Tiktok</span>
                 </div>
@@ -292,6 +293,11 @@
     </div>
 
     <script src="./assets/js/script.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+    AOS.init();
+    </script>
+
 </body>
 
 </html>

@@ -106,3 +106,58 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 });
+
+// Notification starts here
+
+// Notification starts here
+function togglePanel(e) {
+    e.stopPropagation();
+    document.getElementById('notifPanel').classList.toggle('show');
+}
+
+function markAsRead(el) {
+    el.classList.remove('unread');
+    updateBadge();
+}
+
+function markAllAsRead() {
+    document.querySelectorAll('.notif-item.unread')
+        .forEach(el => el.classList.remove('unread'));
+    updateBadge();
+}
+
+function updateBadge() {
+    const count = document.querySelectorAll('.notif-item.unread').length;
+    const badge = document.getElementById('mainBadge');
+    badge.innerText = count;
+    badge.style.display = count ? 'flex' : 'none';
+}
+
+function loadMore() {
+    const list = document.getElementById('notifList');
+
+    const newNotif = document.createElement('div');
+    newNotif.className = 'notif-item unread';
+    newNotif.onclick = function () { markAsRead(this); };
+
+    newNotif.innerHTML = `
+                                            <div class="n-icon" style="color:#3b82f6; background:#dbeafe;">
+                                                <i class='bx bx-refresh'></i>
+                                            </div>
+                                            <div class="n-info">
+                                                <p class="n-title">Refund Processed</p>
+                                                <p class="n-desc">Your refund has been sent.</p>
+                                                <span class="n-time">Now</span>
+                                            </div>
+                                        `;
+
+    list.appendChild(newNotif);
+    updateBadge();
+}
+
+/* CLOSE OUTSIDE */
+window.onclick = function (e) {
+    if (!e.target.closest('.notif-wrapper')) {
+        document.getElementById('notifPanel').classList.remove('show');
+    }
+}

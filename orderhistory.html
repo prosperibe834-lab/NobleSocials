@@ -34,11 +34,79 @@
             </div>
         </div>
 
-        <div class="nav-right">
+         <div class="nav-right">
             <div class="action-icons">
-                <a href=""><button class="icon-btn gold-btn"><i class='bx bx-bell'></i></button></a>
-                <a href=""><button class="icon-btn teal-btn"><i class='bx bx-support'></i></button></a>
-                <a href=""><button class="icon-btn purple-btn"><i class='bx bx-grid-alt'></i></button></a>
+                <div class="notif-wrapper">
+
+                    <button class="icon-btn gold-btn" onclick="togglePanel(event)">
+                        <i class='bx bx-bell'></i>
+                        <span class="notif-badge" id="mainBadge">3</span>
+                    </button>
+
+                    <div class="notif-panel" id="notifPanel">
+
+                        <div class="notif-header">
+                            <h3>Notifications</h3>
+                            <span class="mark-read" onclick="markAllAsRead()">Mark all as read</span>
+                        </div>
+
+                        <div class="notif-content" id="notifList">
+
+                            <div class="notif-item unread" onclick="markAsRead(this)">
+                                <div class="n-icon" style="color: #ef4444; background: #fee2e2;">
+                                    <i class='bx bx-error-circle'></i>
+                                </div>
+                                <div class="n-info">
+                                    <p class="n-title">Suspicious Login</p>
+                                    <p class="n-desc">Someone tried to access your account from London.</p>
+                                    <span class="n-time">Just now</span>
+                                </div>
+                            </div>
+
+                            <div class="notif-item unread" onclick="markAsRead(this)">
+                                <div class="n-icon" style="color: #10b981; background: #d1fae5;">
+                                    <i class='bx bx-trending-up'></i>
+                                </div>
+                                <div class="n-info">
+                                    <p class="n-title">Order Delivered</p>
+                                    <p class="n-desc">Your social media order has been completed successfully.</p>
+                                    <span class="n-time">15 mins ago</span>
+                                </div>
+                            </div>
+
+                            <div class="notif-item unread" onclick="markAsRead(this)">
+                                <div class="n-icon" style="color: #10b981; background: #d1fae5;">
+                                    <i class='bx bx-trending-up'></i>
+                                </div>
+                                <div class="n-info">
+                                    <p class="n-title">Engagement Boosted</p>
+                                    <p class="n-desc">Your post just gained new likes and followers.</p>
+                                    <span class="n-time">15 mins ago</span>
+                                </div>
+                            </div>
+
+                            <div class="notif-item unread" onclick="markAsRead(this)">
+                                <div class="n-icon" style="color: #10b981; background: #d1fae5;">
+                                    <i class='bx bx-trending-up'></i>
+                                </div>
+                                <div class="n-info">
+                                    <p class="n-title">Service Update</p>
+                                    <p class="n-desc">Our system has been improved for faster delivery.</p>
+                                    <span class="n-time">15 mins ago</span>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="notif-footer">
+                            <button class="view-more-btn" onclick="loadMore()">View More Notifications</button>
+                        </div>
+
+                    </div>
+                </div>
+                <a href="contact.html"><button class="icon-btn teal-btn"><i
+                            class='bx bx-message-square-detail'></i></button></a>
+                <a href="settings.html"><button class="icon-btn purple-btn"><i class='bx bx-cog'></i></button></a>
             </div>
         </div>
     </nav>
