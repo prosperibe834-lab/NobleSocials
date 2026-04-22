@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Command Center | Noble Hub</title>
+    <link rel="stylesheet" href="./assets/css/vpnlogs.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+
+    <div class="cyber-bg"></div>
+
+    <main class="command-center">
+        <header class="glass-nav">
+            <a href="vpn.html" class="nav-link"><i class='bx bx-left-arrow-alt'></i> Return to Terminal</a>
+            <div class="system-status">
+                <span class="pulse-dot"></span> System Encrypted: AES-256
+            </div>
+        </header>
+
+        <div class="dashboard-grid">
+            
+            <div class="glass-card main-identity">
+                <div class="vpn-header">
+                    <div id="vpnIcon" class="provider-logo"><i class='bx bx-shield-quarter'></i></div>
+                    <div>
+                        <h1 id="vpnNameDisplay">Initializing...</h1>
+                        <p id="locationDisplay">🇺🇸 US-East Secure Tunnel</p>
+                    </div>
+                </div>
+
+                <div class="connection-visual">
+                    <div class="node-map">
+                        <div class="node home"><i class='bx bx-home-alt'></i><span>You</span></div>
+                        <div class="connection-line">
+                            <div class="ping-traveler"></div>
+                        </div>
+                        <div class="node server"><i class='bx bx-world'></i><span id="nodeName">VPN</span></div>
+                    </div>
+                </div>
+
+                <div class="stats-row">
+                    <div class="stat">
+                        <small>LATENCY</small>
+                        <p>24ms</p>
+                    </div>
+                    <div class="stat">
+                        <small>DOWNLOAD</small>
+                        <p id="downSpeed">0.0 Mb/s</p>
+                    </div>
+                    <div class="stat">
+                        <small>UPLOAD</small>
+                        <p id="upSpeed">0.0 Mb/s</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass-card terminal-info">
+                <div class="timer-section">
+                    <div class="circular-progress">
+                        <svg viewBox="0 0 100 100">
+                            <circle class="bg" cx="50" cy="50" r="45"></circle>
+                            <circle id="timerStroke" class="progress" cx="50" cy="50" r="45"></circle>
+                        </svg>
+                        <div class="time-left">
+                            <h2 id="countdown">20:00</h2>
+                            <small>SESSION VALID</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="credentials-vault">
+                    <div class="vault-item">
+                        <label>ACCESS KEY</label>
+                        <div class="copy-box">
+                            <input type="text" value="noble_premium_v2" id="vpnUser" readonly>
+                            <button onclick="copy('vpnUser')"><i class='bx bx-copy-alt'></i></button>
+                        </div>
+                    </div>
+                    <div class="vault-item">
+                        <label>SECRET TOKEN</label>
+                        <div class="copy-box">
+                            <input type="password" value="X-992-KLA-2026" id="vpnPass" readonly>
+                            <button onclick="togglePass('vpnPass', this)"><i class='bx bx-low-vision'></i></button>
+                            <button onclick="copy('vpnPass')"><i class='bx bx-copy-alt'></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="protocol-tags">
+                    <span>OpenVPN</span>
+                    <span>UDP</span>
+                    <span class="active-tag">IPv6 Leak Protection</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="toast" class="neon-toast">Data Sync Success</div>
+
+    <script src="./assets/js/vpnlogs.js"></script>
+</body>
+</html>

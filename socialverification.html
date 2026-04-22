@@ -1,14 +1,16 @@
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./assets/css/refer.css">
+    <title>Noble Social Hub Dashboard</title>
+    <link rel="stylesheet" href="./assets/css/socialverification.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 
-<body>
+<body class="light-mode">
+
     <div id="preloader">
         <div class="loader">
             <div class="circle"></div>
@@ -33,7 +35,6 @@
                 <p>Grow your social media with ease</p>
             </div>
         </div>
-
 
         <div class="nav-right">
             <div class="action-icons">
@@ -110,8 +111,6 @@
                 <a href="settings.html"><button class="icon-btn purple-btn"><i class='bx bx-cog'></i></button></a>
             </div>
         </div>
-
-
     </nav>
 
     <div class="dashboard-container">
@@ -153,6 +152,7 @@
                     <li><a href="buyaccount.html"><i class='bx bx-shopping-bag'></i> <span>Buy Account</span></a></li>
                     <li><a href="buynumber.html"><i class='bx bx-phone'></i> <span>Buy Number</span></a></li>
                     <li><a href="boostaccount.html"><i class='bx bx-rocket'></i> <span>Boost Accounts</span></a></li>
+
                     <li><a href="vpn.html"><i class='bx bx-globe'></i> <span>Buy Vpn</span></a></li>
                     <li><a href="socialverification.html"><i class='bx bx-check-shield'></i> <span>Social
                                 Verification</span></a></li>
@@ -167,96 +167,162 @@
             </nav>
         </aside>
 
-        <main class="main-content">
-            <div class="referral-container">
-                <header class="refer-header animate-fade-in">
-                    <div class="header-info">
-                        <h2>Refer & Earn Credits</h2>
-                        <p>Invite your friends and earn commissions on every successful transaction.</p>
-                    </div>
-                    <div class="header-actions">
-                        <button class="icon-btn"><i class='bx bx-bell'></i></button>
-                        <button class="icon-btn"><i class='bx bx-support'></i></button>
-                    </div>
-                </header>
 
-                <div class="stats-grid">
-                    <div class="stat-card earn">
-                        <div class="stat-icon"><i class='bx bxs-wallet-alt'></i></div>
-                        <div class="stat-details">
-                            <span>Total Commission</span>
-                            <h3>#0.00</h3>
+        <!-- main -->
+        <main class="main-content">
+            <div class="fintech-header">
+                <div>
+                    <h1>Verification Hub</h1>
+                    <p>Secure, instant access to global temporary numbers and email addresses.</p>
+                </div>
+                <div class="header-actions">
+                    <span class="system-status"><i class='bx bxs-circle'></i> API Online</span>
+                </div>
+            </div>
+
+            <div class="fintech-tabs">
+                <button class="f-tab active" onclick="switchTab('sms-tab')">
+                    <div class="tab-icon"><i class='bx bx-message-square-dots'></i></div>
+                    <div class="tab-text">
+                        <span>SMS Numbers</span>
+                        <small>OTP & Text Verification</small>
+                    </div>
+                </button>
+                <button class="f-tab" onclick="switchTab('email-tab')">
+                    <div class="tab-icon"><i class='bx bx-envelope'></i></div>
+                    <div class="tab-text">
+                        <span>Temp Email</span>
+                        <small>Links & Inbox Access</small>
+                    </div>
+                </button>
+            </div>
+
+            <div id="sms-tab" class="fintech-card active-tab">
+                <div class="form-grid">
+                    <div class="input-group">
+                        <label>Target Country</label>
+                        <div class="premium-dropdown" id="country-dropdown">
+                            <div class="dropdown-trigger" onclick="toggleDropdown('country-dropdown')">
+                                <div class="selected-display" id="selected-country">
+                                    <i class='bx bx-world text-muted'></i> Select a Country
+                                </div>
+                                <i class='bx bx-chevron-down'></i>
+                            </div>
+                            <div class="dropdown-menu">
+                                <div class="dropdown-search">
+                                    <i class='bx bx-search'></i>
+                                    <input type="text" id="country-search" placeholder="Search 50+ countries..."
+                                        onkeyup="filterCountries()">
+                                </div>
+                                <ul class="dropdown-list" id="country-list">
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                    <div class="stat-card friends">
-                        <div class="stat-icon"><i class='bx bxs-user-plus'></i></div>
-                        <div class="stat-details">
-                            <span>Successful Referrals</span>
-                            <h3>0</h3>
-                        </div>
-                    </div>
-                    <div class="stat-card link-card full-width-mobile">
-                        <label>Your Unique Referral Link</label>
-                        <div class="copy-box">
-                            <input type="text" value="https://mediaccts.com/register?ref=prosperibe" id="refLink"
-                                readonly>
-                            <button onclick="copyRefLink()" id="copyBtn">
-                                <i class='bx bx-copy-alt'></i> <span>Copy</span>
-                            </button>
+
+                    <div class="input-group">
+                        <label>Platform / Service (Optional)</label>
+                        <div class="premium-dropdown" id="service-dropdown">
+                            <div class="dropdown-trigger" onclick="toggleDropdown('service-dropdown')">
+                                <div class="selected-display" id="selected-service">
+                                    <i class='bx bx-layer text-muted'></i> Any Service
+                                </div>
+                                <i class='bx bx-chevron-down'></i>
+                            </div>
+                            <div class="dropdown-menu">
+                                <div class="dropdown-search">
+                                    <i class='bx bx-search'></i>
+                                    <input type="text" id="service-search" placeholder="Search service..."
+                                        onkeyup="filterServices()">
+                                </div>
+                                <ul class="dropdown-list" id="service-list">
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <section class="how-it-works">
-                    <div class="section-title">
-                        <h4>How It Works</h4>
-                        <div class="line"></div>
-                    </div>
-                    <div class="step-grid">
-                        <div class="step-item">
-                            <div class="step-num">01</div>
-                            <h5>Share Link</h5>
-                            <p>Copy your link and share it with your network on social media.</p>
-                        </div>
-                        <div class="step-item">
-                            <div class="step-num">02</div>
-                            <h5>Friends Join</h5>
-                            <p>Wait for your friends to sign up and make their first purchase.</p>
-                        </div>
-                        <div class="step-item">
-                            <div class="step-num">03</div>
-                            <h5>Get Paid</h5>
-                            <p>Receive instant commissions credited directly to your wallet.</p>
-                        </div>
-                    </div>
-                </section>
+                <div class="action-row">
+                    <div class="price-estimate">Estimated cost: <b>#150.00</b></div>
+                    <button class="btn-primary" onclick="generateSmsNumber()">
+                        Generate Number <i class='bx bx-right-arrow-alt'></i>
+                    </button>
+                </div>
 
-                <section class="history-section">
-                    <div class="section-title">
-                        <h4>Commission History</h4>
+                <div class="digital-asset-card" id="sms-result" style="display: none;">
+                    <div class="asset-header">
+                        <div class="asset-title">
+                            <img id="active-flag" src="" alt="" style="display:none; width: 20px; border-radius: 3px;">
+                            <span id="active-country">Awaiting...</span>
+                        </div>
+                        <div class="asset-status" id="sms-status">
+                            <div class="spinner"></div> Provisioning...
+                        </div>
                     </div>
-                    <div class="table-container">
-                        <table class="history-table">
-                            <thead>
-                                <tr>
-                                    <th>Date</th>
-                                    <th>Reference User</th>
-                                    <th>Amount</th>
-                                    <th>Status</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td colspan="4" class="empty-msg">No rewards earned yet. Start sharing!</td>
-                                </tr>
-                            </tbody>
-                        </table>
+
+                    <div class="asset-body">
+                        <div class="number-wrapper">
+                            <h2 id="generated-number">---</h2>
+                            <button class="icon-btn-small copy" onclick="copyToClipboard('generated-number', this)">
+                                <i class='bx bx-copy'></i>
+                            </button>
+                        </div>
+                        <div class="timer-display" id="sms-timer">15:00</div>
                     </div>
-                </section>
+
+                    <div class="asset-footer" id="otp-container">
+                        <p class="waiting-text"><i class='bx bx-radar pulse-icon'></i> Listening for incoming SMS...</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="email-tab" class="fintech-card" style="display: none;">
+                <div class="email-generator-box">
+                    <div class="email-info">
+                        <h3>Private Temporary Inbox</h3>
+                        <p>Perfect for sign-up links, verification buttons, and OTPs.</p>
+                    </div>
+                    <button class="btn-secondary" onclick="generateEmail()">
+                        <i class='bx bx-plus'></i> Create Inbox
+                    </button>
+                </div>
+
+                <div class="webmail-container" id="email-result" style="display: none;">
+                    <div class="webmail-header">
+                        <div class="address-box">
+                            <i class='bx bx-envelope'></i>
+                            <span id="generated-email">generating...</span>
+                            <button class="text-btn" onclick="copyToClipboard('generated-email', this)">Copy</button>
+                        </div>
+                        <button class="refresh-btn" onclick="checkInbox()" id="refresh-btn">
+                            <i class='bx bx-refresh'></i> Refresh
+                        </button>
+                    </div>
+
+                    <div class="webmail-body">
+                        <div class="mail-list" id="inbox-messages">
+                            <div class="empty-state">
+                                <i class='bx bx-inbox'></i>
+                                <p>Your inbox is empty</p>
+                                <small>Waiting for incoming emails...</small>
+                            </div>
+                        </div>
+                        <div class="mail-reader" id="mail-reader" style="display: none;">
+                            <div class="reader-header">
+                                <h4 id="read-subject">Subject</h4>
+                                <span id="read-sender">From: sender@example.com</span>
+                            </div>
+                            <div class="reader-body" id="read-body">
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </main>
+    </div>
 
-        <script src="./assets/js/refer.js"></script>
+    <script src="./assets/js/socialverification.js"></script>
+
 </body>
 
 </html>
