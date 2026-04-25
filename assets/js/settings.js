@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             panes.forEach(p => {
                 p.classList.remove('active');
-                if(p.id === target) p.classList.add('active');
+                if (p.id === target) p.classList.add('active');
             });
         });
     });

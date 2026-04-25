@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Vault | Noble Social Hub</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="./assets/css/accountlogs.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+
+<body class="dark-theme">
+
+    <div id="loader" class="loader-overlay">
+        <div class="loader-box">
+            <div class="pulse-ring"></div>
+            <i class='bx bxs-lock-alt'></i>
+            <p>Securing Assets...</p>
+        </div>
+    </div>
+
+    <div id="toast-container"></div>
+
+    <div class="app-container">
+        <main class="main-content">
+            <header class="vault-header">
+                <div class="header-left">
+                    <a href="buyaccount.html" class="back-link"><i class='bx bx-arrow-back'></i> Store</a>
+                    <h1>Digital Vault</h1>
+                </div>
+                <div class="header-right">
+                    <span class="live-status"><span class="dot"></span> System Online</span>
+                </div>
+            </header>
+
+            <section id="latest-section">
+                <div id="printable-receipt" class="receipt-card">
+                    <div class="receipt-header">
+                        <div class="receipt-logo">NOBLE<span>HUB</span></div>
+                        <div class="receipt-status">SUCCESSFUL</div>
+                    </div>
+
+                    <div class="receipt-main">
+                        <div class="amount-group">
+                            <label>Transaction Amount</label>
+                            <h2 id="main-amount">₦0.00</h2>
+                            <p id="main-txn-id">NSH-000000000</p>
+                        </div>
+                        <div class="date-group">
+                            <span id="main-date">--/--/--</span>
+                        </div>
+                    </div>
+
+                    <div class="warranty-timer">
+                        <div class="timer-label"><i class='bx bx-shield-quarter'></i> 24H Warranty Active</div>
+                        <div class="countdown" id="main-timer">24:00:00</div>
+                    </div>
+
+                    <div class="info-grid">
+                        <div class="info-box"><span>Platform</span><strong id="main-platform">---</strong></div>
+                        <div class="info-box"><span>Category</span><strong id="main-category">---</strong></div>
+                    </div>
+
+                    <div class="vault-credentials">
+                        <h3><i class='bx bxs-key'></i> Access Keys</h3>
+
+                        <div class="cred-row">
+                            <label>Username</label>
+                            <div class="field-wrap">
+                                <input type="text" id="user-field" readonly value="Loading...">
+                                <button onclick="copyText('user-field')"><i class='bx bx-copy'></i></button>
+                            </div>
+                        </div>
+
+                        <div class="cred-row">
+                            <label>Password</label>
+                            <div class="field-wrap">
+                                <input type="password" id="pass-field" readonly value="********">
+                                <button onclick="togglePass()"><i class='bx bx-show'></i></button>
+                                <button onclick="copyText('pass-field')"><i class='bx bx-copy'></i></button>
+                            </div>
+                        </div>
+
+                        <div class="cred-row">
+                            <label>2FA Backup Secret</label>
+                            <div class="field-wrap">
+                                <input type="text" id="twofa-field" readonly value="---">
+                                <button class="btn-get-code" onclick="open2FAModal()">Get Code</button>
+                                <button onclick="copyText('twofa-field')"><i class='bx bx-copy'></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn-download" onclick="downloadReceipt()">
+                        <i class='bx bxs-cloud-download'></i> Download PDF
+                    </button>
+                    <a href="buyaccount.html" class="btn-buy-more">
+                        <i class='bx bx-plus-circle'></i> Buy Another Account
+                    </a>
+                </div>
+            </section>
+
+            <section class="history-section">
+                <div class="history-head">
+                    <h3>Transaction History</h3>
+                    <div class="search-wrap">
+                        <i class='bx bx-search'></i>
+                        <input type="text" id="searchLogs" placeholder="Search accounts...">
+                    </div>
+                </div>
+                <div class="table-scroll">
+                    <table id="historyTable">
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Platform</th>
+                                <th>Price</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody id="historyBody"></tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div id="modal2FA" class="modal-overlay hidden">
+        <div class="modal-card">
+            <button class="modal-close" onclick="close2FAModal()">&times;</button>
+            <div class="modal-glow"></div>
+            <i class='bx bxs-lock-open-alt modal-icon'></i>
+            <h3>Live 2FA Code</h3>
+            <p>Paste this code into your login screen</p>
+            <div class="code-display" id="live-code">------</div>
+            <div class="progress-container">
+                <div class="progress-bar" id="code-progress"></div>
+            </div>
+            <button class="btn-copy-big" onclick="copyText('live-code', true)">Copy Code</button>
+        </div>
+    </div>
+
+    <script src="./assets/js/accountlogs.js"></script>
+</body>
+
+</html>

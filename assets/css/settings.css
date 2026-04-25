@@ -449,7 +449,13 @@ input:checked + .slider:before { transform: translateX(20px); }
 
 @media (max-width: 768px) {
     .modern-form {
-        grid-template-columns: 1fr; /* stack */
+        grid-template-columns: 1fr;
+    }
+
+    .input-wrapper,
+    .input-wrapper.full-width {
+        grid-column: span 1 !important;
+        width: 100%;
     }
 }
 

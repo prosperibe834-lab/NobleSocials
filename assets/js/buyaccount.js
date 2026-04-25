@@ -247,7 +247,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 el.textContent = isHidden ? '****' : '#0.00';
             });
         });
-    }   
+    }
 
 });
 
@@ -306,3 +306,71 @@ window.onclick = function (e) {
         document.getElementById('notifPanel').classList.remove('show');
     }
 }
+
+
+document.querySelector('.purchase-btn').addEventListener('click', () => {
+    // 1. Gather the selected data
+    const platform = document.getElementById('social-account').value;
+    const category = document.getElementById('select-category').value || 'Standard';
+    const quantity = document.getElementById('quantity').value;
+    const price = document.getElementById('total-price-display').innerText;
+    
+    if (!platform) {
+        alert("Please configure your order first.");
+        return;
+    }
+
+    // 2. Create an order object
+    const orderData = {
+        id: 'ORD-' + Math.floor(100000 + Math.random() * 900000),
+        platform: platform,
+        category: category,
+        quantity: quantity,
+        price: price,
+        purchaseTime: new Date().getTime() // Save exact time for the timer
+    };
+
+    // 3. Save to local storage and redirect
+    localStorage.setItem('latestOrder', JSON.stringify(orderData));
+    
+    // Animate button before redirecting for a smooth feel
+    const btn = document.querySelector('.purchase-btn');
+    btn.innerHTML = "<i class='bx bx-loader-alt bx-spin'></i> Processing...";
+    
+    setTimeout(() => {
+        window.location.href = 'accountlogs.html';
+    }, 800);
+});
+
+// Inside your purchase button event listener in buyaccount.js
+const purchaseBtn = document.querySelector('.purchase-btn');
+
+purchaseBtn.addEventListener('click', () => {
+    // 1. GATHER THE LIVE DATA (The important part!)
+    const selectedPlatform = document.getElementById('social-account').value;
+    const selectedCategory = document.getElementById('select-category').value;
+    
+    // Grab the actual text currently showing on your screen
+    const liveTotalAmount = document.getElementById('total-price-display').innerText;
+
+    // 2. CREATE THE LOG OBJECT
+    const newPurchase = {
+        id: "TXN-" + Math.floor(100000 + Math.random() * 900000),
+        platform: selectedPlatform,
+        category: selectedCategory,
+        amount: liveTotalAmount, // This now matches what the user sees
+        date: new Date().toLocaleString(),
+        status: "Successful",
+        username: "user_" + Math.random().toString(36).substring(7),
+        password: "pass_" + Math.random().toString(36).substring(7),
+        twoFactor: "2FA-" + Math.random().toString(36).toUpperCase().substring(7)
+    };
+
+    // 3. SAVE TO ARRAY
+    let existingLogs = JSON.parse(localStorage.getItem('accountLogs')) || [];
+    existingLogs.push(newPurchase);
+    localStorage.setItem('accountLogs', JSON.stringify(existingLogs));
+
+    // 4. REDIRECT
+    window.location.href = 'accountlogs.html';
+});

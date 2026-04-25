@@ -254,3 +254,10 @@ window.onclick = function (e) {
         document.getElementById('notifPanel').classList.remove('show');
     }
 }
+
+// Fix viewport height on mobile keyboard open
+function setRealHeight() {
+    document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
+}
+window.addEventListener('resize', setRealHeight);
+setRealHeight();

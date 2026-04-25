@@ -155,6 +155,8 @@
                     <li><a href="boostaccount.html"><i class='bx bx-rocket'></i> <span>Boost Accounts</span></a></li>
 
                     <li><a href="vpn.html"><i class='bx bx-globe'></i> <span>Buy Vpn</span></a></li>
+                    <li><a href="socialverification.html"><i class='bx bx-check-shield'></i> <span>Social
+                                Verification</span></a></li>
                 </ul>
 
                 <p class="section-label">Account</p>
@@ -166,165 +168,166 @@
             </nav>
         </aside>
 
-<main class="main-content">
-    <div class="vpn-container" data-aos="fade-up">
-        <header class="vpn-header">
-            <div class="header-left">
-                <h1><i class='bx bx-shield-quarter'></i> Premium VPN Store</h1>
-                <p>Access 20+ global providers with instant activation.</p>
-            </div>
-            <div class="wallet-card-premium">
-                <div class="wallet-icon"><i class='bx bx-wallet-alt'></i></div>
-                <div class="wallet-info">
-                    <span>Available Balance</span>
-                    <h2 class="text-balance">₦25,000.00</h2>
-                </div>
-                <a href="addfund.html" class="add-btn-circle"><i class='bx bx-plus'></i></a>
-            </div>
-        </header>
-
-        <section class="search-section-glass card">
-            <div class="search-inner">
-                <i class='bx bx-search'></i>
-                <input type="text" id="vpnSearch" placeholder="Search by name (e.g., 'nord', 'noord', 'surf')..." onkeyup="filterVpns()">
-            </div>
-        </section>
-
-        <div class="vpn-main-layout">
-            <section class="purchase-card card">
-                <div class="card-header">
-                    <h3><i class='bx bx-cog'></i> Configure Connection</h3>
-                </div>
-                <form id="vpnForm">
-                    <div class="form-group">
-                        <label>Select VPN Provider</label>
-                        <select id="vpnProvider" class="premium-select" onchange="calculatePrice()">
-                            <optgroup label="Premium Giants">
-                                <option value="nord" data-price="1200">NordVPN (Ultra Secure)</option>
-                                <option value="express" data-price="1800">ExpressVPN (High Speed)</option>
-                                <option value="surfshark" data-price="900">Surfshark (Unlimited)</option>
-                            </optgroup>
-                            <optgroup label="Privacy & Anonymity">
-                                <option value="proton" data-price="1500">Proton VPN</option>
-                                <option value="mullvad" data-price="1000">Mullvad (Anonymous)</option>
-                                <option value="cyberghost" data-price="1100">CyberGhost</option>
-                                <option value="ivpn" data-price="1400">IVPN</option>
-                                <option value="windscribe" data-price="850">Windscribe</option>
-                            </optgroup>
-                            <optgroup label="Global Options">
-                                <option value="pia" data-price="950">PIA</option>
-                                <option value="vyprvpn" data-price="1300">VyprVPN</option>
-                                <option value="astrill" data-price="2500">Astrill VPN</option>
-                            </optgroup>
-                        </select>
+        <main class="main-content">
+            <div class="vpn-container" data-aos="fade-up">
+                <header class="vpn-header">
+                    <div class="header-left">
+                        <h1><i class='bx bx-shield-quarter'></i> Premium VPN Store</h1>
+                        <p>Access 20+ global providers with instant activation.</p>
                     </div>
-
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label>Server Country</label>
-                            <select id="vpnCountry" class="premium-select">
-                                <option value="usa">🇺🇸 USA (Netflix)</option>
-                                <option value="uk">🇬🇧 UK</option>
-                                <option value="can">🇨🇦 Canada</option>
-                                <option value="ned">🇳🇱 Netherlands</option>
-                            </select>
+                    <div class="wallet-card-premium">
+                        <div class="wallet-icon"><i class='bx bx-wallet-alt'></i></div>
+                        <div class="wallet-info">
+                            <span>Available Balance</span>
+                            <h2 class="text-balance">₦25,000.00</h2>
                         </div>
-                        <div class="form-group">
-                            <label>Duration</label>
-                            <select id="vpnDuration" class="premium-select" onchange="calculatePrice()">
-                                <option value="1">1 Day (Pass)</option>
-                                <option value="7">7 Days (Weekly)</option>
-                                <option value="30">30 Days (Monthly)</option>
-                                <option value="365">1 Year (60% Off)</option>
-                            </select>
+                        <a href="addfund.html" class="add-btn-circle"><i class='bx bx-plus'></i></a>
+                    </div>
+                </header>
+
+                <section class="search-section-glass card">
+                    <div class="search-inner">
+                        <i class='bx bx-search'></i>
+                        <input type="text" id="vpnSearch"
+                            placeholder="Search by name (e.g., 'nord', 'noord', 'surf')..." onkeyup="filterVpns()">
+                    </div>
+                </section>
+
+                <div class="vpn-main-layout">
+                    <section class="purchase-card card">
+                        <div class="card-header">
+                            <h3><i class='bx bx-cog'></i> Configure Connection</h3>
                         </div>
-                    </div>
+                        <form id="vpnForm">
+                            <div class="form-group">
+                                <label>Select VPN Provider</label>
+                                <select id="vpnProvider" class="premium-select" onchange="calculatePrice()">
+                                    <optgroup label="Premium Giants">
+                                        <option value="nord" data-price="1200">NordVPN (Ultra Secure)</option>
+                                        <option value="express" data-price="1800">ExpressVPN (High Speed)</option>
+                                        <option value="surfshark" data-price="900">Surfshark (Unlimited)</option>
+                                    </optgroup>
+                                    <optgroup label="Privacy & Anonymity">
+                                        <option value="proton" data-price="1500">Proton VPN</option>
+                                        <option value="mullvad" data-price="1000">Mullvad (Anonymous)</option>
+                                        <option value="cyberghost" data-price="1100">CyberGhost</option>
+                                        <option value="ivpn" data-price="1400">IVPN</option>
+                                        <option value="windscribe" data-price="850">Windscribe</option>
+                                    </optgroup>
+                                    <optgroup label="Global Options">
+                                        <option value="pia" data-price="950">PIA</option>
+                                        <option value="vyprvpn" data-price="1300">VyprVPN</option>
+                                        <option value="astrill" data-price="2500">Astrill VPN</option>
+                                    </optgroup>
+                                </select>
+                            </div>
 
-                    <div class="price-summary">
-                        <div class="price-tag">
-                            <span>Total Payable:</span>
-                            <h2 id="totalPriceDisplay">₦1,200.00</h2>
-                        </div>
-                        <p id="savingsLabel" class="savings-text"></p>
-                    </div>
-
-                    <button type="submit" class="btn-purchase-premium" id="buyBtn">
-                        Confirm Purchase <i class='bx bx-chevron-right'></i>
-                    </button>
-                </form>
-            </section>
-
-            <section class="packs-sidebar">
-                <h3 class="section-title">Recommended Packs</h3>
-                <div class="pack-glass-card" onclick="autoFill('usa', 'express', '7')">
-                    <div class="pack-brand blue-icon"><i class='bx bxl-play-store'></i></div>
-                    <div class="pack-meta">
-                        <h4>Streaming Pro</h4>
-                        <p>USA | 7 Days</p>
-                    </div>
-                    <div class="pack-val">₦9,500</div>
-                </div>
-
-                <div class="pack-glass-card" onclick="autoFill('ned', 'mullvad', '30')">
-                    <div class="pack-brand purple-icon"><i class='bx bx-shield-quarter'></i></div>
-                    <div class="pack-meta">
-                        <h4>Privacy Master</h4>
-                        <p>NL | 30 Days</p>
-                    </div>
-                    <div class="pack-val">₦15,000</div>
-                </div>
-            </section>
-        </div>
-
-        <section class="table-section-premium card">
-            <h3>Recent Subscriptions</h3>
-            <div class="table-wrapper">
-                <table class="premium-table">
-                    <thead>
-                        <tr>
-                            <th>VPN Provider</th>
-                            <th>Location</th>
-                            <th>Expiry Date</th>
-                            <th>Status</th>
-                            <th class="text-right">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-                                <div class="table-provider">
-                                    <div class="p-circle"><i class='bx bx-globe'></i></div>
-                                    <span>NordVPN Premium</span>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Server Country</label>
+                                    <select id="vpnCountry" class="premium-select">
+                                        <option value="usa">🇺🇸 USA (Netflix)</option>
+                                        <option value="uk">🇬🇧 UK</option>
+                                        <option value="can">🇨🇦 Canada</option>
+                                        <option value="ned">🇳🇱 Netherlands</option>
+                                    </select>
                                 </div>
-                            </td>
-                            <td>🇺🇸 USA</td>
-                            <td>Apr 28, 2026</td>
-                            <td><span class="badge-active">Active</span></td>
-                            <td class="text-right"><a href="vpnlogs.html" class="table-btn">Logins</a></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-    </div>
+                                <div class="form-group">
+                                    <label>Duration</label>
+                                    <select id="vpnDuration" class="premium-select" onchange="calculatePrice()">
+                                        <option value="1">1 Day (Pass)</option>
+                                        <option value="7">7 Days (Weekly)</option>
+                                        <option value="30">30 Days (Monthly)</option>
+                                        <option value="365">1 Year (60% Off)</option>
+                                    </select>
+                                </div>
+                            </div>
 
-    <div id="successModal" class="modal-overlay">
-        <div class="modal-card">
-            <div class="success-icon-anim">
-                <div class="checkmark-draw"></div>
+                            <div class="price-summary">
+                                <div class="price-tag">
+                                    <span>Total Payable:</span>
+                                    <h2 id="totalPriceDisplay">₦1,200.00</h2>
+                                </div>
+                                <p id="savingsLabel" class="savings-text"></p>
+                            </div>
+
+                            <button type="submit" class="btn-purchase-premium" id="buyBtn">
+                                Confirm Purchase <i class='bx bx-chevron-right'></i>
+                            </button>
+                        </form>
+                    </section>
+
+                    <section class="packs-sidebar">
+                        <h3 class="section-title">Recommended Packs</h3>
+                        <div class="pack-glass-card" onclick="autoFill('usa', 'express', '7')">
+                            <div class="pack-brand blue-icon"><i class='bx bxl-play-store'></i></div>
+                            <div class="pack-meta">
+                                <h4>Streaming Pro</h4>
+                                <p>USA | 7 Days</p>
+                            </div>
+                            <div class="pack-val">₦9,500</div>
+                        </div>
+
+                        <div class="pack-glass-card" onclick="autoFill('ned', 'mullvad', '30')">
+                            <div class="pack-brand purple-icon"><i class='bx bx-shield-quarter'></i></div>
+                            <div class="pack-meta">
+                                <h4>Privacy Master</h4>
+                                <p>NL | 30 Days</p>
+                            </div>
+                            <div class="pack-val">₦15,000</div>
+                        </div>
+                    </section>
+                </div>
+
+                <section class="table-section-premium card">
+                    <h3>Recent Subscriptions</h3>
+                    <div class="table-wrapper">
+                        <table class="premium-table">
+                            <thead>
+                                <tr>
+                                    <th>VPN Provider</th>
+                                    <th>Location</th>
+                                    <th>Expiry Date</th>
+                                    <th>Status</th>
+                                    <th class="text-right">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="table-provider">
+                                            <div class="p-circle"><i class='bx bx-globe'></i></div>
+                                            <span>NordVPN Premium</span>
+                                        </div>
+                                    </td>
+                                    <td>🇺🇸 USA</td>
+                                    <td>Apr 28, 2026</td>
+                                    <td><span class="badge-active">Active</span></td>
+                                    <td class="text-right"><a href="vpnlogs.html" class="table-btn">Logins</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
             </div>
-            <h2>Order Confirmed!</h2>
-            <p>Your VPN account is ready. Redirecting you to the login portal...</p>
-        </div>
-    </div>
-</main>
-        
+
+            <div id="successModal" class="modal-overlay">
+                <div class="modal-card">
+                    <div class="success-icon-anim">
+                        <div class="checkmark-draw"></div>
+                    </div>
+                    <h2>Order Confirmed!</h2>
+                    <p>Your VPN account is ready. Redirecting you to the login portal...</p>
+                </div>
+            </div>
+        </main>
+
     </div>
 
     <script src="./assets/js/vpn.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-    AOS.init();
+        AOS.init();
     </script>
 
 </body>

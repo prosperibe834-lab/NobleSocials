@@ -656,3 +656,42 @@ select {
     background-position: right 15px center;
     background-size: 16px;
 }
+
+/* =========================
+   🔥 MOBILE KEYBOARD FIX
+   ========================= */
+
+
+/* Fix main content overflow */
+@media (max-width: 992px) {
+    .main-content {
+        margin-left: 0;
+        max-width: 100%;
+        width: 100%;
+        min-height: auto;
+        padding: 20px;
+    }
+}
+
+/* Prevent keyboard breaking layout */
+.dashboard-container {
+    align-items: flex-start;
+}
+
+/* Fix input zoom + shifting */
+input, select, textarea {
+    font-size: 16px;
+}
+
+/* Allow content to expand when keyboard shows */
+@media (max-width: 768px) {
+    .checkout-grid,
+    .card {
+        overflow: visible;
+    }
+}
+
+/* BEST FIX for mobile height (keyboard safe) */
+.main-content {
+    min-height: calc(100dvh - var(--nav-h));
+}

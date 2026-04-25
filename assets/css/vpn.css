@@ -915,3 +915,54 @@ input:checked+.slider:before {
     }
 
 }
+
+/* ========================= */
+/* 🔥 SEARCH OVERFLOW FIX 🔥 */
+/* ========================= */
+
+
+/* Search container fix */
+.search-section-glass {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+/* Inner search layout */
+.search-inner {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    overflow: hidden; /* 🔥 stops overflow */
+}
+
+/* Input fix (MAIN FIX) */
+.search-inner input {
+    width: 100%;
+    min-width: 0; /* 🔥 VERY IMPORTANT */
+    flex: 1;
+}
+
+/* Prevent select from expanding layout */
+select {
+    max-width: 100%;
+}
+
+/* Extra safety for form elements */
+input, select, textarea {
+    max-width: 100%;
+}
+
+/* ========================= */
+/* 📱 MOBILE STABILITY FIX */
+/* ========================= */
+@media (max-width: 600px) {
+    .search-inner {
+        gap: 10px;
+    }
+
+    .search-inner input {
+        font-size: 14px;
+    }
+}
