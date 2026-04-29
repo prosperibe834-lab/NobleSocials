@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NobleSocials Admin</title>
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="./css/users.css">
+</head>
+<body>
+
+  <div class="mobile-header">
+    <div class="brand">
+      <div class="logo-icon-wrap"><i class='bx bx-trending-up'></i></div>
+      <span>NobleSocials</span>
+    </div>
+    <i class='bx bx-menu-alt-right' id="mobile-toggle"></i>
+  </div>
+
+  <nav class="sidebar">
+    <div class="logo-details">
+      <div class="logo-icon-wrap"><i class='bx bx-trending-up icon'></i></div>
+      <span class="logo_name">NobleSocials</span>
+      <i class='bx bx-x' id="close-sidebar"></i>
+    </div>
+
+    <div class="menu-items">
+      <ul class="nav-links">
+        <li><a href="index.html" ><i class='bx bx-grid-alt'></i><span class="link_name">Dashboard</span></a></li>
+        <li><a href="transactions.html"><i class='bx bx-transfer'></i><span class="link_name">Transactions</span></a></li>
+        <li><a href="users.html" class="active"><i class='bx bx-user-circle'></i><span class="link_name">Users</span></a></li>
+        <li><a href="boostaccount.html"><i class='bx bx-rocket'></i><span class="link_name">Boost Accounts</span></a></li>
+        <li><a href="#"><i class='bx bx-plus-circle'></i><span class="link_name">Add Social</span></a></li>
+        <li><a href="#"><i class='bx bx-shield-quarter'></i><span class="link_name">Add VPN</span></a></li>
+        <li><a href="#"><i class='bx bx-box'></i><span class="link_name">Inventory</span></a></li>
+        
+        <li class="divider"></li>
+
+        <li><a href="#"><i class='bx bx-bar-chart-alt-2'></i><span class="link_name">Analytics</span></a></li>
+        <li><a href="#"><i class='bx bx-cog'></i><span class="link_name">Settings</span></a></li>
+        <li><a href="#"><i class='bx bx-support'></i><span class="link_name">Contact</span></a></li>
+      </ul>
+      
+      <ul class="bottom-links">
+        <li><a href="#" class="logout-btn"><i class='bx bx-log-out'></i><span class="link_name">Logout</span></a></li>
+        <li class="mode">
+          <div class="mode-wrap">
+            <i class='bx bx-moon moon'></i>
+            <span class="link_name mode-text">Dark Mode</span>
+          </div>
+          <div class="toggle-switch">
+            <span class="switch"></span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+                                <!-- Main Contents Starts here -->
+<section class="main-content">
+  <div class="content-header">
+    <div class="header-text">
+      <h1>User Management</h1>
+      <p>Manage and monitor your NobleSocials members.</p>
+    </div>
+    <button class="btn-primary" onclick="openAddModal()">
+      <i class='bx bx-user-plus'></i> Add New User
+    </button>
+  </div>
+
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-icon pulse-blue"><i class='bx bx-group'></i></div>
+      <div class="stat-info">
+        <h3 id="total-users-count">0</h3>
+        <p>Total Members</p>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon pulse-green"><i class='bx bx-badge-check'></i></div>
+      <div class="stat-info">
+        <h3>Verified</h3>
+        <p>System Status</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="table-container">
+    <div class="table-header">
+      <h2>Active Members</h2>
+      <div class="search-box">
+        <i class='bx bx-search'></i>
+        <input type="text" id="userSearch" placeholder="Search by name, username or email..." onkeyup="filterUsers()">
+      </div>
+    </div>
+    
+    <div class="table-responsive">
+      <table id="userTable">
+        <thead>
+          <tr>
+            <th>User Details</th>
+            <th>Username</th>
+            <th>Phone Number</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="userTableBody">
+          </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<div class="modal-overlay" id="userModal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2 id="modalTitle">Add New Member</h2>
+      <i class='bx bx-x close-modal' onclick="closeModal()"></i>
+    </div>
+    <form id="userForm">
+      <input type="hidden" id="editUserId">
+      <div class="input-grid">
+        <div class="input-group">
+          <label>Full Name</label>
+          <input type="text" id="formFullname" required placeholder="John Doe">
+        </div>
+        <div class="input-group">
+          <label>Username</label>
+          <input type="text" id="formUsername" required placeholder="johndoe_123">
+        </div>
+        <div class="input-group">
+          <label>Email Address</label>
+          <input type="email" id="formEmail" required placeholder="name@example.com">
+        </div>
+        <div class="input-group">
+          <label>Phone Number</label>
+          <input type="tel" id="formPhone" required placeholder="+234...">
+        </div>
+        <div class="input-group full-width">
+          <label>Account Status</label>
+          <select id="formStatus">
+            <option value="Active">Active</option>
+            <option value="Pending">Pending</option>
+            <option value="Suspended">Suspended</option>
+          </select>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-secondary" onclick="closeModal()">Cancel</button>
+        <button type="submit" class="btn-primary" id="submitBtn">Save Member</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+  <script src="./js/users.js"></script>
+</body>
+</html>

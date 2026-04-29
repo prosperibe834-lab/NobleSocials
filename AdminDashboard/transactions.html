@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NobleSocials Admin</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="./css/transactions.css">
+</head>
+
+<body>
+
+    <div class="mobile-header">
+        <div class="brand">
+            <div class="logo-icon-wrap"><i class='bx bx-trending-up'></i></div>
+            <span>NobleSocials</span>
+        </div>
+        <i class='bx bx-menu-alt-right' id="mobile-toggle"></i>
+    </div>
+
+    <nav class="sidebar">
+        <div class="logo-details">
+            <div class="logo-icon-wrap"><i class='bx bx-trending-up icon'></i></div>
+            <span class="logo_name">NobleSocials</span>
+            <i class='bx bx-x' id="close-sidebar"></i>
+        </div>
+
+        <div class="menu-items">
+            <ul class="nav-links">
+                <li><a href="index.html"><i class='bx bx-grid-alt'></i><span class="link_name">Dashboard</span></a></li>
+                <li><a href="transactions.html" class="active"><i class='bx bx-transfer'></i><span
+                            class="link_name">Transactions</span></a></li>
+                <li><a href="users.html"><i class='bx bx-user-circle'></i><span class="link_name">Users</span></a></li>
+                <li><a href="#"><i class='bx bx-rocket'></i><span class="link_name">Boost Accounts</span></a></li>
+                <li><a href="#"><i class='bx bx-plus-circle'></i><span class="link_name">Add Social</span></a></li>
+                <li><a href="#"><i class='bx bx-shield-quarter'></i><span class="link_name">Add VPN</span></a></li>
+                <li><a href="#"><i class='bx bx-box'></i><span class="link_name">Inventory</span></a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="#"><i class='bx bx-bar-chart-alt-2'></i><span class="link_name">Analytics</span></a></li>
+                <li><a href="#"><i class='bx bx-cog'></i><span class="link_name">Settings</span></a></li>
+                <li><a href="#"><i class='bx bx-support'></i><span class="link_name">Contact</span></a></li>
+            </ul>
+
+            <ul class="bottom-links">
+                <li><a href="#" class="logout-btn"><i class='bx bx-log-out'></i><span
+                            class="link_name">Logout</span></a></li>
+                <li class="mode">
+                    <div class="mode-wrap">
+                        <i class='bx bx-moon moon'></i>
+                        <span class="link_name mode-text">Dark Mode</span>
+                    </div>
+                    <div class="toggle-switch">
+                        <span class="switch"></span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Contents Starts here -->
+
+    <section class="main-content">
+        <div class="transaction-wrapper">
+            <div class="content-header">
+                <div>
+                    <h1>Financial Transactions</h1>
+                    <p>Monitor, filter, and audit all NobleSocials movements</p>
+                </div>
+                <button class="export-btn" onclick="downloadCSV()">
+                    <i class='bx bx-export'></i> Export CSV
+                </button>
+            </div>
+
+            <div class="filter-card">
+                <div class="search-input-group">
+                    <i class='bx bx-search'></i>
+                    <!-- <input type="text" id="transSearch" placeholder="Search Reference ID or Username..." onkeyup="masterFilter()"> -->
+                    <input type="text" id="transSearch" placeholder="Search Reference ID or Username..."
+                        onkeyup="masterFilter()">
+                </div>
+
+                <div class="filter-controls">
+                    <div class="date-grp">
+                        <label>Date</label>
+                        <input type="date" id="dateFilter" onchange="masterFilter()">
+                    </div>
+
+                    <div class="select-grp">
+                        <label>Type</label>
+                        <select id="typeFilter" onchange="masterFilter()">
+                            <option value="all">All Types</option>
+                            <option value="deposit">Deposit</option>
+                            <option value="purchase">Purchase</option>
+                            <option value="refund">Refund</option>
+                        </select>
+                    </div>
+
+                    <div class="select-grp">
+                        <label>Status</label>
+                        <select id="statusFilter" onchange="masterFilter()">
+                            <option value="all">All Status</option>
+                            <option value="success">Successful</option>
+                            <option value="failed">Failed</option>
+                            <option value="pending">Pending</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="table-card">
+                <div class="table-responsive">
+                    <table id="transactionsTable">
+                        <thead>
+                            <tr>
+                                <th>Reference ID</th>
+                                <th>User Details</th>
+                                <th>Type</th>
+                                <th>Amount</th>
+                                <th>Method</th>
+                                <th>Status</th>
+                                <th>Date & Time</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tableBody">
+                            <tr class="t-row" data-type="deposit" data-status="success" data-date="2026-04-29">
+                                <td class="ref-col">#TRX-992011</td>
+                                <td>
+                                    <div class="user-meta">
+                                        <span class="u-name">Chidi Noble</span>
+                                        <span class="u-email">chidi@example.com</span>
+                                    </div>
+                                </td>
+                                <td><span class="type-badge deposit">Deposit</span></td>
+                                <td class="amt-col plus">+ ₦25,000.00</td>
+                                <td>Paystack</td>
+                                <td><span class="status-badge success">Successful</span></td>
+                                <td class="date-col">Apr 29, 2026 <small>10:15 AM</small></td>
+                                <td><button class="opt-btn"><i class='bx bx-dots-horizontal-rounded'></i></button></td>
+                            </tr>
+
+                            <tr class="t-row" data-type="purchase" data-status="failed" data-date="2026-04-28">
+                                <td class="ref-col">#TRX-992012</td>
+                                <td>
+                                    <div class="user-meta">
+                                        <span class="u-name">Alice Smith</span>
+                                        <span class="u-email">alice.s@gmail.com</span>
+                                    </div>
+                                </td>
+                                <td><span class="type-badge purchase">Purchase</span></td>
+                                <td class="amt-col minus">- ₦1,200.00</td>
+                                <td>Wallet</td>
+                                <td><span class="status-badge failed">Failed</span></td>
+                                <td class="date-col">Apr 28, 2026 <small>02:45 PM</small></td>
+                                <td><button class="opt-btn"><i class='bx bx-dots-horizontal-rounded'></i></button></td>
+                            </tr>
+
+                            <tr class="t-row" data-type="purchase" data-status="pending" data-date="2026-04-29">
+                                <td class="ref-col">#TRX-992015</td>
+                                <td>
+                                    <div class="user-meta">
+                                        <span class="u-name">Kelechi Dev</span>
+                                        <span class="u-email">k.dev@noble.com</span>
+                                    </div>
+                                </td>
+                                <td><span class="type-badge purchase">Purchase</span></td>
+                                <td class="amt-col minus">- ₦5,500.00</td>
+                                <td>Bank Transfer</td>
+                                <td><span class="status-badge pending">Pending</span></td>
+                                <td class="date-col">Apr 29, 2026 <small>12:00 PM</small></td>
+                                <td><button class="opt-btn"><i class='bx bx-dots-horizontal-rounded'></i></button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="./js/transactions.js"></script>
+</body>
+
+</html>

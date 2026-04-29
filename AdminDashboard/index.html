@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NobleSocials Admin</title>
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+  <div class="mobile-header">
+    <div class="brand">
+      <div class="logo-icon-wrap"><i class='bx bx-trending-up'></i></div>
+      <span>NobleSocials</span>
+    </div>
+    <i class='bx bx-menu-alt-right' id="mobile-toggle"></i>
+  </div>
+
+  <nav class="sidebar">
+    <div class="logo-details">
+      <div class="logo-icon-wrap"><i class='bx bx-trending-up icon'></i></div>
+      <span class="logo_name">NobleSocials</span>
+      <i class='bx bx-x' id="close-sidebar"></i>
+    </div>
+
+    <div class="menu-items">
+      <ul class="nav-links">
+        <li><a href="index.html" class="active"><i class='bx bx-grid-alt'></i><span class="link_name">Dashboard</span></a></li>
+        <li><a href="transactions.html"><i class='bx bx-transfer'></i><span class="link_name">Transactions</span></a></li>
+        <li><a href="users.html"><i class='bx bx-user-circle'></i><span class="link_name">Users</span></a></li>
+        <li><a href="boostaccount.html"><i class='bx bx-rocket'></i><span class="link_name">Boost Accounts</span></a></li>
+        <li><a href="addsocial.html"><i class='bx bx-plus-circle'></i><span class="link_name">Add Social</span></a></li>
+        <li><a href="addvpn.html"><i class='bx bx-shield-quarter'></i><span class="link_name">Add VPN</span></a></li>
+        <li><a href="inventory.html"><i class='bx bx-box'></i><span class="link_name">Inventory</span></a></li>
+        
+        <li class="divider"></li>
+
+        <li><a href="#"><i class='bx bx-bar-chart-alt-2'></i><span class="link_name">Analytics</span></a></li>
+        <li><a href="#"><i class='bx bx-cog'></i><span class="link_name">Settings</span></a></li>
+        <li><a href="#"><i class='bx bx-support'></i><span class="link_name">Contact</span></a></li>
+      </ul>
+      
+      <ul class="bottom-links">
+        <li><a href="#" class="logout-btn"><i class='bx bx-log-out'></i><span class="link_name">Logout</span></a></li>
+        <li class="mode">
+          <div class="mode-wrap">
+            <i class='bx bx-moon moon'></i>
+            <span class="link_name mode-text">Dark Mode</span>
+          </div>
+          <div class="toggle-switch">
+            <span class="switch"></span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+                                <!-- Main Contents Starts here -->
+
+<section class="main-content">
+  <div class="dashboard-container">
+    
+    <header class="top-header">
+      <div class="search-box">
+        <i class='bx bx-search'></i>
+        <input type="text" id="dashboardSearch" placeholder="Search accounts, VPNs, or services..." onkeyup="handleSearch()">
+      </div>
+      
+      <div class="header-right">
+        <div class="filter-pill">
+          <button class="f-btn active" onclick="updateTimeframe('days', this)">D</button>
+          <button class="f-btn" onclick="updateTimeframe('weeks', this)">W</button>
+          <button class="f-btn" onclick="updateTimeframe('months', this)">M</button>
+          <button class="f-btn" onclick="updateTimeframe('years', this)">Y</button>
+        </div>
+        <div class="admin-meta">
+          <div class="notif"><i class='bx bx-bell'></i><span class="pulse"></span></div>
+          <img src="https://ui-avatars.com/api/?name=Noble+Admin&background=6366f1&color=fff" alt="Admin">
+        </div>
+      </div>
+    </header>
+
+    <div class="stats-row">
+      <div class="glass-card stat-item">
+        <div class="stat-icon purple"><i class='bx bx-wallet'></i></div>
+        <div class="stat-text">
+          <p>Total Revenue</p>
+          <h3 id="revValue">₦4,250,000</h3>
+          <span class="trend up"><i class='bx bx-up-arrow-alt'></i> 12%</span>
+        </div>
+      </div>
+      <div class="glass-card stat-item">
+        <div class="stat-icon blue"><i class='bx bx-group'></i></div>
+        <div class="stat-text">
+          <p>Total Users</p>
+          <h3 id="userValue">12,842</h3>
+          <span class="trend up"><i class='bx bx-up-arrow-alt'></i> 5%</span>
+        </div>
+      </div>
+      <div class="glass-card stat-item">
+        <div class="stat-icon orange"><i class='bx bx-package'></i></div>
+        <div class="stat-text">
+          <p>Stock Level</p>
+          <h3 id="stockValue">84%</h3>
+          <div class="mini-progress"><div class="fill" style="width: 84%"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="charts-grid">
+      <div class="glass-card main-chart-box">
+        <div class="card-head">
+          <h4>Revenue Growth Rate</h4>
+          <i class='bx bx-dots-horizontal-rounded'></i>
+        </div>
+        <div id="revenueGrowthChart"></div>
+      </div>
+
+      <div class="glass-card inventory-box">
+        <div class="card-head">
+          <h4>Inventory Status</h4>
+          <button class="link-btn" id="viewAllStock" onclick="toggleInventory()">View All</button>
+        </div>
+        <ul class="stock-list" id="stockList">
+          <li class="stock-item-row" data-name="facebook accounts">
+            <span>Facebook (US)</span>
+            <span class="badge low">42 Left</span>
+          </li>
+          <li class="stock-item-row" data-name="instagram accounts">
+            <span>Instagram (NG)</span>
+            <span class="badge success">150 Left</span>
+          </li>
+          <li class="stock-item-row" data-name="nordvpn keys">
+            <span>NordVPN Keys</span>
+            <span class="badge critical">5 Left</span>
+          </li>
+          <li class="stock-item-row hidden-stock" data-name="tiktok accounts">
+            <span>TikTok Organic</span>
+            <span class="badge success">200 Left</span>
+          </li>
+          <li class="stock-item-row hidden-stock" data-name="whatsapp numbers">
+            <span>WhatsApp (UK)</span>
+            <span class="badge low">12 Left</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="bottom-grid">
+      <div class="glass-card bar-box">
+        <h4>Best Selling Services</h4>
+        <div id="bestSellingChart"></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+  <script src="./js/script.js"></script>
+</body>
+</html>

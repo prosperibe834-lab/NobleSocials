@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NobleSocials Admin</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="./css/boostaccount.css">
+</head>
+
+<body>
+
+    <div class="mobile-header">
+        <div class="brand">
+            <div class="logo-icon-wrap"><i class='bx bx-trending-up'></i></div>
+            <span>NobleSocials</span>
+        </div>
+        <i class='bx bx-menu-alt-right' id="mobile-toggle"></i>
+    </div>
+
+    <nav class="sidebar">
+        <div class="logo-details">
+            <div class="logo-icon-wrap"><i class='bx bx-trending-up icon'></i></div>
+            <span class="logo_name">NobleSocials</span>
+            <i class='bx bx-x' id="close-sidebar"></i>
+        </div>
+
+        <div class="menu-items">
+            <ul class="nav-links">
+                <li><a href="index.html"><i class='bx bx-grid-alt'></i><span class="link_name">Dashboard</span></a></li>
+                <li><a href="transactions.html"><i class='bx bx-transfer'></i><span
+                            class="link_name">Transactions</span></a></li>
+                <li><a href="users.html"><i class='bx bx-user-circle'></i><span class="link_name">Users</span></a></li>
+                <li><a href="boostaccount.html" class="active"><i class='bx bx-rocket'></i><span class="link_name">Boost
+                            Accounts</span></a></li>
+                <li><a href="addsocial.html"><i class='bx bx-plus-circle'></i><span class="link_name">Add
+                            Social</span></a></li>
+                <li><a href="#"><i class='bx bx-shield-quarter'></i><span class="link_name">Add VPN</span></a></li>
+                <li><a href="#"><i class='bx bx-box'></i><span class="link_name">Inventory</span></a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="#"><i class='bx bx-bar-chart-alt-2'></i><span class="link_name">Analytics</span></a></li>
+                <li><a href="#"><i class='bx bx-cog'></i><span class="link_name">Settings</span></a></li>
+                <li><a href="#"><i class='bx bx-support'></i><span class="link_name">Contact</span></a></li>
+            </ul>
+
+            <ul class="bottom-links">
+                <li><a href="#" class="logout-btn"><i class='bx bx-log-out'></i><span
+                            class="link_name">Logout</span></a></li>
+                <li class="mode">
+                    <div class="mode-wrap">
+                        <i class='bx bx-moon moon'></i>
+                        <span class="link_name mode-text">Dark Mode</span>
+                    </div>
+                    <div class="toggle-switch">
+                        <span class="switch"></span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Contents Starts here -->
+
+    <main class="main-content">
+        <div class="fin-header animate-entry">
+            <div>
+                <h1>Service Core</h1>
+                <p>Global ecosystem management and pricing</p>
+            </div>
+            <button class="glass-action-btn" id="openAddModal">
+                <i class='bx bx-plus'></i>
+                <span>New Service</span>
+            </button>
+        </div>
+
+        <div class="fin-stats-container">
+            <div class="fin-stat-card bounce-in">
+                <div class="stat-icon-wrap blue"><i class='bx bx-line-chart'></i></div>
+                <div class="stat-data">
+                    <span class="stat-title">Active Services</span>
+                    <h2 class="stat-value">142</h2>
+                </div>
+            </div>
+            <div class="fin-stat-card bounce-in" style="animation-delay: 0.1s">
+                <div class="stat-icon-wrap purple"><i class='bx bx-check-double'></i></div>
+                <div class="stat-data">
+                    <span class="stat-title">System Status</span>
+                    <h2 class="stat-value">Healthy</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="glass-panel animate-entry" style="animation-delay: 0.2s">
+            <div class="panel-header">
+                <h3>Management Console</h3>
+            </div>
+            <div class="scroll-container">
+                <table class="fin-table">
+                    <thead>
+                        <tr>
+                            <th>Platform</th>
+                            <th>Category</th>
+                            <th>Quality</th>
+                            <th>Rate (1k)</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="service-rows">
+                        <tr>
+                            <td>
+                                <div class="plat-flex">
+                                    <i class='bx bxl-instagram-alt ig-color'></i>
+                                    <span>Instagram</span>
+                                </div>
+                            </td>
+                            <td>Followers</td>
+                            <td><span class="badge premium">Premium</span></td>
+                            <td><span class="currency">#</span>1,200.00</td>
+                            <td>
+                                <div class="status-indicator"><span></span>Live</div>
+                            </td>
+                            <td>
+                                <button class="row-edit-btn update-trigger" data-plat="instagram" data-cat="followers"
+                                    data-rate="1200" data-quality="premium">
+                                    <i class='bx bx-slider-alt'></i> Manage
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="adminModal" class="fin-modal-overlay">
+            <div class="fin-modal-card">
+                <div class="modal-head">
+                    <h3 id="modalTitle">Service Configuration</h3>
+                    <button class="close-modal-btn"><i class='bx bx-x'></i></button>
+                </div>
+                <form id="serviceForm" class="modal-body">
+                    <div class="form-grid">
+                        <div class="fin-input-wrap">
+                            <label>Platform</label>
+                            <select id="srv-platform" class="fin-select">
+                                <option value="instagram">Instagram</option>
+                                <option value="facebook">Facebook</option>
+                                <option value="twitter">Twitter (X)</option>
+                                <option value="tiktok">TikTok</option>
+                            </select>
+                        </div>
+                        <div class="fin-input-wrap">
+                            <label>Service Category</label>
+                            <select id="srv-category" class="fin-select">
+                                <option value="followers">Followers</option>
+                                <option value="likes">Likes</option>
+                                <option value="comments">Comments</option>
+                                <option value="views">Views</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="fin-input-wrap">
+                        <label>Quality Grade</label>
+                        <div class="quality-toggle-group">
+                            <label class="q-tab">
+                                <input type="radio" name="srv-quality" value="standard" checked>
+                                <span>Standard</span>
+                            </label>
+                            <label class="q-tab">
+                                <input type="radio" name="srv-quality" value="premium">
+                                <span>Premium</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="fin-input-wrap">
+                        <label>Base Rate (Per 1,000 Units)</label>
+                        <div class="price-input-box">
+                            <span>#</span>
+                            <input type="number" id="srv-rate" placeholder="0.00" step="0.01">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="fin-submit-btn">
+                        <span>Sync Ecosystem</span>
+                        <i class='bx bx-refresh'></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+
+
+        <section class="order-section animate-entry" style="animation-delay: 0.3s;">
+            <div class="glass-panel">
+                <div class="panel-top">
+                    <div class="panel-title">
+                        <div class="live-indicator">
+                            <span class="pulse-dot"></span>
+                            <span class="live-text">Live Orders</span>
+                        </div>
+                        <h3>Transaction Ledger</h3>
+                    </div>
+
+                    <div class="filter-group">
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="pending">Pending</button>
+                        <button class="filter-btn" data-filter="completed">Completed</button>
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="fintech-table">
+                        <thead>
+                            <tr>
+                                <th>Customer</th>
+                                <th>Service Details</th>
+                                <th>Target Link</th>
+                                <th>Value</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="order-ledger-body">
+                            <tr class="order-row" data-status="pending">
+                                <td>
+                                    <div class="user-info">
+                                        <div class="user-init">PB</div>
+                                        <div>
+                                            <p class="main-text">Prosperibe</p>
+                                            <p class="sub-text">#ORD-9920</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="service-tag"><i class='bx bxl-instagram-alt'></i><span>IG
+                                            Followers</span></div>
+                                </td>
+                                <td>
+                                    <div class="link-action-group">
+                                        <a href="https://instagram.com/user1" target="_blank" class="link-btn"><i
+                                                class='bx bx-export'></i> <span>Visit</span></a>
+                                        <button class="copy-link-btn"
+                                            onclick="copyToClipboard('https://instagram.com/user1', this)"><i
+                                                class='bx bx-copy'></i></button>
+                                    </div>
+                                </td>
+                                <td>
+                                    <p class="price-text">#4,500.00</p>
+                                    <p class="sub-text">10k units</p>
+                                </td>
+                                <td><span class="badge b-pending">Pending</span></td>
+                                <td><button class="finalize-btn" onclick="handleFinalize(this)"><i
+                                            class='bx bx-check-circle'></i></button></td>
+                            </tr>
+
+                            <tr class="order-row" data-status="completed">
+                                <td>
+                                    <div class="user-info">
+                                        <div class="user-init" style="background:#10b981">JK</div>
+                                        <div>
+                                            <p class="main-text">John Keys</p>
+                                            <p class="sub-text">#ORD-9921</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="service-tag"><i class='bx bxl-tiktok'></i><span>TikTok Views</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="link-action-group">
+                                        <a href="https://tiktok.com/user2" target="_blank" class="link-btn"><i
+                                                class='bx bx-export'></i> <span>Visit</span></a>
+                                        <button class="copy-link-btn"
+                                            onclick="copyToClipboard('https://tiktok.com/user2', this)"><i
+                                                class='bx bx-copy'></i></button>
+                                    </div>
+                                </td>
+                                <td>
+                                    <p class="price-text">#1,200.00</p>
+                                    <p class="sub-text">5k units</p>
+                                </td>
+                                <td><span class="badge b-success">Completed</span></td>
+                                <td><button class="finalize-btn done"><i class='bx bx-check-double'></i></button></td>
+                            </tr>
+
+                            <tr class="order-row" data-status="pending">
+                                <td>
+                                    <div class="user-info">
+                                        <div class="user-init" style="background:#f59e0b">SA</div>
+                                        <div>
+                                            <p class="main-text">Sam Aden</p>
+                                            <p class="sub-text">#ORD-9922</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="service-tag"><i class='bx bxl-facebook-circle'></i><span>FB Likes</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="link-action-group">
+                                        <a href="https://facebook.com/user3" target="_blank" class="link-btn"><i
+                                                class='bx bx-export'></i> <span>Visit</span></a>
+                                        <button class="copy-link-btn"
+                                            onclick="copyToClipboard('https://facebook.com/user3', this)"><i
+                                                class='bx bx-copy'></i></button>
+                                    </div>
+                                </td>
+                                <td>
+                                    <p class="price-text">#8,000.00</p>
+                                    <p class="sub-text">20k units</p>
+                                </td>
+                                <td><span class="badge b-pending">Pending</span></td>
+                                <td><button class="finalize-btn" onclick="handleFinalize(this)"><i
+                                            class='bx bx-check-circle'></i></button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="./js/boostaccount.js"></script>
+</body>
+
+</html>

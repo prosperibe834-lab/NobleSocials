@@ -660,8 +660,9 @@ input:checked+.slider:before {
 }
 
 .btn-purchase-premium:hover {
-    background: #D4AF37;
+    background: var(--gold);
     transform: translateY(-3px);
+    color: var(--white);
 }
 
 /* Recommended Packs */
