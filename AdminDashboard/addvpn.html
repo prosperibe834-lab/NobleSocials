@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <link rel="stylesheet" href="./css/addvpn.css">
 </head>
+
 <body>
 
   <div class="mobile-header">
@@ -26,21 +28,24 @@
 
     <div class="menu-items">
       <ul class="nav-links">
-        <li><a href="index.html" ><i class='bx bx-grid-alt'></i><span class="link_name">Dashboard</span></a></li>
-        <li><a href="transactions.html"><i class='bx bx-transfer'></i><span class="link_name">Transactions</span></a></li>
+        <li><a href="index.html"><i class='bx bx-grid-alt'></i><span class="link_name">Dashboard</span></a></li>
+        <li><a href="transactions.html"><i class='bx bx-transfer'></i><span class="link_name">Transactions</span></a>
+        </li>
         <li><a href="users.html"><i class='bx bx-user-circle'></i><span class="link_name">Users</span></a></li>
-        <li><a href="boostaccount.html"><i class='bx bx-rocket'></i><span class="link_name">Boost Accounts</span></a></li>
-        <li><a href="addsocial.html" class="active"><i class='bx bx-plus-circle'></i><span class="link_name">Add Social</span></a></li>
-        <li><a href="#"><i class='bx bx-shield-quarter'></i><span class="link_name">Add VPN</span></a></li>
-        <li><a href="#"><i class='bx bx-box'></i><span class="link_name">Inventory</span></a></li>
-        
+        <li><a href="boostaccount.html"><i class='bx bx-rocket'></i><span class="link_name">Boost Accounts</span></a>
+        </li>
+        <li><a href="addsocial.html"><i class='bx bx-plus-circle'></i><span class="link_name">Add Social</span></a></li>
+        <li><a href="addvpn.html" class="active"><i class='bx bx-shield-quarter'></i><span class="link_name">Add
+              VPN</span></a></li>
+        <li><a href="inventory.html"><i class='bx bx-box'></i><span class="link_name">Inventory</span></a></li>
+
         <li class="divider"></li>
 
         <li><a href="#"><i class='bx bx-bar-chart-alt-2'></i><span class="link_name">Analytics</span></a></li>
         <li><a href="#"><i class='bx bx-cog'></i><span class="link_name">Settings</span></a></li>
         <li><a href="#"><i class='bx bx-support'></i><span class="link_name">Contact</span></a></li>
       </ul>
-      
+
       <ul class="bottom-links">
         <li><a href="#" class="logout-btn"><i class='bx bx-log-out'></i><span class="link_name">Logout</span></a></li>
         <li class="mode">
@@ -56,15 +61,119 @@
     </div>
   </nav>
 
-                                <!-- Main Contents Starts here -->
+  <!-- Main Contents Starts here -->
 
   <section class="main-content">
     <div class="content-header">
-      <h1>Dashboard Overview</h1>
-      <p>Welcome back to NobleSocials</p>
+      <div class="header-titles">
+        <h1><i class='bx bx-shield-quarter'></i> VPN Command Center</h1>
+        <p>Manage inventory, track sales, and monitor server stock levels.</p>
+      </div>
+      <div class="header-actions">
+        <div class="search-box-admin">
+          <i class='bx bx-search'></i>
+          <input type="text" id="tableSearch" placeholder="Search accounts..." onkeyup="filterTable()">
+        </div>
+        <button class="btn-refresh" onclick="refreshSystem()"><i class='bx bx-refresh'></i></button>
+      </div>
     </div>
+
+    <div class="admin-grid-stats">
+      <div class="stat-card">
+        <div class="stat-icon blue"><i class='bx bx-package'></i></div>
+        <div class="stat-data">
+          <span class="label">Total Stock</span>
+          <h2 id="stat-total-stock">0</h2>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon gold"><i class='bx bx-cart-alt'></i></div>
+        <div class="stat-data">
+          <span class="label">Total Sold</span>
+          <h2 id="stat-total-sold">142</h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="management-layout">
+      <div class="inventory-form-wrapper card">
+        <div class="card-title">
+          <h3><i class='bx bx-list-plus'></i> Import Accounts</h3>
+        </div>
+        <form id="adminVpnForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label>VPN Provider</label>
+              <select id="newVpnProvider" class="admin-input">
+                <option value="NordVPN">NordVPN</option>
+                <option value="ExpressVPN">ExpressVPN</option>
+                <option value="Surfshark">Surfshark</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Category</label>
+              <select id="vpnCategory" class="admin-input">
+                <option value="Premium">Premium</option>
+                <option value="Ultra">Ultra High Speed</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group mt-20">
+            <label>Accounts (Format: email:password)</label>
+            <textarea id="vpnData" class="admin-input" rows="5" placeholder="user@mail.com:pass123"></textarea>
+          </div>
+          <button type="submit" class="btn-submit-inventory">Add to Inventory</button>
+        </form>
+      </div>
+
+      <div class="stock-monitor card">
+        <div class="card-title">
+          <h3>Stock Status</h3>
+        </div>
+        <div id="stockBars">
+        </div>
+        <div class="quick-tools">
+          <button class="tool-btn" onclick="exportLogs()"><i class='bx bx-download'></i> Export Logs</button>
+          <button class="tool-btn danger" onclick="clearSold()"><i class='bx bx-trash'></i> Clear Sold</button>
+        </div>
+      </div>
+    </div>
+
+   <div class="inventory-table-container card mt-20">
+    <div class="card-title">
+      <h3><i class='bx bx-table'></i> Active Inventory Database</h3>
+      <div class="table-filters">
+        <div class="custom-select-wrapper">
+          <select id="filterProvider" onchange="filterTable()">
+              <option value="all">All Providers</option>
+              <option value="NordVPN">NordVPN</option>
+              <option value="ExpressVPN">ExpressVPN</option>
+              <option value="Surfshark">Surfshark</option>
+          </select>
+          <i class='bx bx-chevron-down'></i>
+        </div>
+      </div>
+    </div>
+    
+    <div class="table-responsive">
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>VPN Provider</th>
+            <th>Account Details</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="inventoryBody">
+          </tbody>
+      </table>
+    </div>
+</div>
   </section>
 
   <script src="./js/addvpn.js"></script>
 </body>
+
 </html>

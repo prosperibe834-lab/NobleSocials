@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NobleSocials | Admin Registration</title>
+    <link rel="stylesheet" href="./css/login.css"> <!-- Reusing login.css for consistency -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body class="dark">
+    
+    <div class="login-container" style="max-width: 500px;"> <!-- Slightly wider for registration -->
+        <div class="login-box">
+            <div class="login-header">
+                <div class="logo-icon">
+                    <i class='bx bxs-user-plus'></i>
+                </div>
+                <h1>Create Admin Account</h1>
+                <p>Join the NobleSocials management team</p>
+            </div>
+
+            <form id="signupForm" onsubmit="handleSignup(event)">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                    <div class="input-group">
+                        <label>Full Name</label>
+                        <div class="input-wrapper">
+                            <i class='bx bx-user'></i>
+                            <input type="text" id="fullname" placeholder="John Doe" required>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label>Username</label>
+                        <div class="input-wrapper">
+                            <i class='bx bx-at'></i>
+                            <input type="text" id="username" placeholder="admin_john" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label>Work Email</label>
+                    <div class="input-wrapper">
+                        <i class='bx bx-envelope'></i>
+                        <input type="email" id="email" placeholder="john@noblesocials.com" required>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label>Admin Password</label>
+                    <div class="input-wrapper">
+                        <i class='bx bx-lock-alt'></i>
+                        <input type="password" id="password" placeholder="••••••••" required onkeyup="checkPasswordStrength(this.value)">
+                        <i class='bx bx-hide toggle-password' onclick="togglePassword()"></i>
+                    </div>
+                    <!-- Password Strength Meter -->
+                    <div class="strength-meter" style="height: 4px; background: var(--border-color); margin-top: 10px; border-radius: 10px; overflow: hidden;">
+                        <div id="strength-bar" style="width: 0%; height: 100%; transition: 0.3s;"></div>
+                    </div>
+                </div>
+
+                <div class="login-utils">
+                    <label class="checkbox-container">
+                        <input type="checkbox" required>
+                        <span class="checkmark"></span>
+                        I agree to the <a href="#" class="forgot-link">Privacy Policy</a>
+                    </label>
+                </div>
+
+                <button type="submit" class="login-btn" id="signupBtn">
+                    <span>Create Account</span>
+                    <i class='bx bx-user-check'></i>
+                </button>
+            </form>
+
+            <div class="login-footer">
+                <p>Already have an account? <a href="login.html">Sign In</a></p>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast-container" class="toast-container"></div>
+
+    <script src="./js/signup.js"></script>
+</body>
+</html>

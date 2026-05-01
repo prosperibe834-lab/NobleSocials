@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NobleSocials Admin</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="./css/addnumber.css">
+</head>
+
+<body>
+
+    <div class="mobile-header">
+        <div class="brand">
+            <div class="logo-icon-wrap"><i class='bx bx-trending-up'></i></div>
+            <span>NobleSocials</span>
+        </div>
+        <i class='bx bx-menu-alt-right' id="mobile-toggle"></i>
+    </div>
+
+    <nav class="sidebar">
+        <div class="logo-details">
+            <div class="logo-icon-wrap"><i class='bx bx-trending-up icon'></i></div>
+            <span class="logo_name">NobleSocials</span>
+            <i class='bx bx-x' id="close-sidebar"></i>
+        </div>
+
+        <div class="menu-items">
+            <ul class="nav-links">
+                <li><a href="index.html"><i class='bx bx-grid-alt'></i><span class="link_name">Dashboard</span></a></li>
+                <li><a href="transactions.html"><i class='bx bx-transfer'></i><span
+                            class="link_name">Transactions</span></a></li>
+                <li><a href="users.html"><i class='bx bx-user-circle'></i><span class="link_name">Users</span></a></li>
+                <li><a href="boostaccount.html"><i class='bx bx-rocket'></i><span class="link_name">Boost
+                            Accounts</span></a></li>
+                <li><a href="addsocial.html"><i class='bx bx-plus-circle'></i><span class="link_name">Add
+                            Social</span></a></li>
+                <li><a href="addvpn.html"><i class='bx bx-shield-quarter'></i><span class="link_name">Add VPN</span></a>
+                </li>
+                <li><a href="adnumber.html" class="active"><i class='bx bx-shield-quarter'></i><span
+                            class="link_name">Add Number</span></a></li>
+                <li><a href="inventory.html"><i class='bx bx-box'></i><span class="link_name">Inventory</span></a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="#"><i class='bx bx-bar-chart-alt-2'></i><span class="link_name">Analytics</span></a></li>
+                <li><a href="#"><i class='bx bx-cog'></i><span class="link_name">Settings</span></a></li>
+                <li><a href="#"><i class='bx bx-support'></i><span class="link_name">Contact</span></a></li>
+            </ul>
+
+            <ul class="bottom-links">
+                <li><a href="#" class="logout-btn"><i class='bx bx-log-out'></i><span
+                            class="link_name">Logout</span></a></li>
+                <li class="mode">
+                    <div class="mode-wrap">
+                        <i class='bx bx-moon moon'></i>
+                        <span class="link_name mode-text">Dark Mode</span>
+                    </div>
+                    <div class="toggle-switch">
+                        <span class="switch"></span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Contents Starts here -->
+
+    <section class="main-content">
+        <div class="f-container">
+            <!-- TOP ANALYTICS SECTION -->
+            <div class="f-metrics">
+                <div class="m-card">
+                    <div class="m-icon green"><i class='bx bx-trending-up'></i></div>
+                    <div class="m-text">
+                        <p>Total Revenue</p>
+                        <h2 id="total-revenue">₦0</h2>
+                    </div>
+                </div>
+                <div class="m-card">
+                    <div class="m-icon red"><i class='bx bx-credit-card-front'></i></div>
+                    <div class="m-text">
+                        <p>API Costs</p>
+                        <h2 id="total-cost">₦0</h2>
+                    </div>
+                </div>
+                <div class="m-card highlight">
+                    <div class="m-icon purple"><i class='bx bx-line-chart'></i></div>
+                    <div class="m-text">
+                        <p>Net Profit</p>
+                        <h2 id="total-profit">₦0</h2>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CONTROL BAR -->
+            <div class="f-table-card">
+                <div class="f-header">
+                    <div class="h-left">
+                        <h1>Transaction Ledger</h1>
+                        <div class="f-search">
+                            <i class='bx bx-search'></i>
+                            <input type="text" id="masterSearch" placeholder="Search customer or service...">
+                        </div>
+                    </div>
+                    <div class="h-right">
+                        <button class="btn btn-sync" onclick="refreshSystem()">
+                            <i class='bx bx-refresh'></i> Sync API
+                        </button>
+                        <button class="btn btn-add" onclick="toggleModal(true)">
+                            <i class='bx bx-plus'></i> Add Service
+                        </button>
+                    </div>
+                </div>
+
+                <!-- TABLE SECTION -->
+                <div class="f-table-wrapper">
+                    <table class="f-table">
+                        <thead>
+                            <tr>
+                                <th>User & Transaction ID</th>
+                                <th>Service</th>
+                                <th>Sale Price</th>
+                                <th>Cost</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="txBody">
+                            <!-- Data injected by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- PREMIUM MODAL -->
+        <div id="serviceModal" class="f-modal-overlay">
+            <div class="f-modal">
+                <div class="modal-h">
+                    <h3>Deploy New Service</h3>
+                    <button onclick="toggleModal(false)">&times;</button>
+                </div>
+                <div class="modal-b">
+                    <div class="input-box">
+                        <label>Platform Name</label>
+                        <input type="text" id="newSvcName" placeholder="e.g. WhatsApp">
+                    </div>
+                    <div class="input-row">
+                        <div class="input-box">
+                            <label>Provider</label>
+                            <select id="newSvcProvider">
+                                <option>5SIM</option>
+                                <option>SMS-Activate</option>
+                            </select>
+                        </div>
+                        <div class="input-box">
+                            <label>Markup (%)</label>
+                            <input type="number" id="newSvcMarkup" placeholder="30">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-f">
+                    <button class="btn btn-ghost" onclick="toggleModal(false)">Cancel</button>
+                    <button class="btn btn-add" onclick="confirmService()">Create Service</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- NOTIFICATION TOAST -->
+        <div id="f-toast" class="f-toast">Action Successful!</div>
+    </section>
+
+    <script src="./js/addnumber.js"></script>
+</body>
+
+</html>

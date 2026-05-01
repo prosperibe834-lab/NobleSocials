@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <link rel="stylesheet" href="./css/addsocial.css">
 </head>
+
 <body>
 
   <div class="mobile-header">
@@ -26,21 +28,24 @@
 
     <div class="menu-items">
       <ul class="nav-links">
-        <li><a href="index.html" ><i class='bx bx-grid-alt'></i><span class="link_name">Dashboard</span></a></li>
-        <li><a href="transactions.html"><i class='bx bx-transfer'></i><span class="link_name">Transactions</span></a></li>
+        <li><a href="index.html"><i class='bx bx-grid-alt'></i><span class="link_name">Dashboard</span></a></li>
+        <li><a href="transactions.html"><i class='bx bx-transfer'></i><span class="link_name">Transactions</span></a>
+        </li>
         <li><a href="users.html"><i class='bx bx-user-circle'></i><span class="link_name">Users</span></a></li>
-        <li><a href="boostaccount.html"><i class='bx bx-rocket'></i><span class="link_name">Boost Accounts</span></a></li>
-        <li><a href="addsocial.html" class="active"><i class='bx bx-plus-circle'></i><span class="link_name">Add Social</span></a></li>
-        <li><a href="#"><i class='bx bx-shield-quarter'></i><span class="link_name">Add VPN</span></a></li>
-        <li><a href="#"><i class='bx bx-box'></i><span class="link_name">Inventory</span></a></li>
-        
+        <li><a href="boostaccount.html"><i class='bx bx-rocket'></i><span class="link_name">Boost Accounts</span></a>
+        </li>
+        <li><a href="addsocial.html" class="active"><i class='bx bx-plus-circle'></i><span class="link_name">Add
+              Social</span></a></li>
+        <li><a href="addvpn.html"><i class='bx bx-shield-quarter'></i><span class="link_name">Add VPN</span></a></li>
+        <li><a href="inventory.html"><i class='bx bx-box'></i><span class="link_name">Inventory</span></a></li>
+
         <li class="divider"></li>
 
         <li><a href="#"><i class='bx bx-bar-chart-alt-2'></i><span class="link_name">Analytics</span></a></li>
         <li><a href="#"><i class='bx bx-cog'></i><span class="link_name">Settings</span></a></li>
         <li><a href="#"><i class='bx bx-support'></i><span class="link_name">Contact</span></a></li>
       </ul>
-      
+
       <ul class="bottom-links">
         <li><a href="#" class="logout-btn"><i class='bx bx-log-out'></i><span class="link_name">Logout</span></a></li>
         <li class="mode">
@@ -56,15 +61,138 @@
     </div>
   </nav>
 
-                                <!-- Main Contents Starts here -->
+  <!-- Main Contents Starts here -->
 
   <section class="main-content">
-    <div class="content-header">
-      <h1>Dashboard Overview</h1>
-      <p>Welcome back to NobleSocials</p>
+    <div class="content-header fade-in">
+      <div class="header-text">
+        <h1>Inventory Management</h1>
+        <p>Deploy and manage social media assets across the hub.</p>
+      </div>
+      <div class="header-actions">
+        <label for="csv-upload" class="btn-import-premium">
+          <i class='bx bx-cloud-download'></i>
+          <span>Bulk Import CSV</span>
+          <input type="file" id="csv-upload" accept=".csv" hidden>
+        </label>
+      </div>
+    </div>
+
+    <div class="admin-grid">
+      <div class="glass-card slide-up">
+        <div class="card-head">
+          <div class="head-icon"><i class='bx bx-plus-circle'></i></div>
+          <h2>Add New Assets</h2>
+        </div>
+
+        <form id="add-social-form" class="admin-form">
+          <div class="input-row">
+            <div class="input-group">
+              <label>Platform</label>
+              <select id="adm-platform" required>
+                <option value="facebook">Facebook</option>
+                <option value="instagram">Instagram</option>
+                <option value="tiktok">TikTok</option>
+                <option value="twitter">Twitter</option>
+                <option value="linkedin">LinkedIn</option>
+              </select>
+            </div>
+            <div class="input-group">
+              <label>Category Name</label>
+              <input type="text" id="adm-category" placeholder="e.g. USA Aged (2015)" required>
+            </div>
+          </div>
+
+          <div class="input-row">
+            <div class="input-group">
+              <label>Price per Unit (₦)</label>
+              <input type="number" id="adm-price" placeholder="5000" required>
+            </div>
+            <div class="input-group">
+              <label>Stock Count</label>
+              <input type="text" id="adm-stock" readonly value="0" class="readonly-input">
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label>Paste Logins (Format: user:pass:2fa — One per line)</label>
+            <textarea id="adm-logins" rows="5" placeholder="user1:pass1:secret1&#10;user2:pass2:secret2"
+              required></textarea>
+          </div>
+
+          <button type="submit" class="btn-primary-gradient" id="submit-btn">
+            <i class='bx bx-cloud-upload'></i> Push to Storefront
+          </button>
+        </form>
+      </div>
+
+      <div class="stats-column">
+        <div class="glass-card stat-card slide-up" style="animation-delay: 0.1s;">
+          <div class="s-info">
+            <span class="s-label">Total Inventory</span>
+            <h2 id="total-stock-val">0</h2>
+          </div>
+          <div class="s-icon"><i class='bx bx-box'></i></div>
+        </div>
+
+        <div class="glass-card stat-card slide-up" style="animation-delay: 0.2s;">
+          <div class="s-info">
+            <span class="s-label">Live Listings</span>
+            <h2 id="active-listings-val">0</h2>
+          </div>
+          <div class="s-icon"><i class='bx bx-list-check'></i></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="inventory-section fade-in">
+      <div class="section-title">
+        <h2>Current Inventory</h2>
+        <div class="search-wrapper-premium">
+          <i class='bx bx-search'></i>
+          <input type="text" id="inventory-search" placeholder="Search categories or platforms...">
+        </div>
+      </div>
+      <div class="glass-card table-holder">
+        <table class="noble-table">
+          <thead>
+            <tr>
+              <th>Platform</th>
+              <th>Category</th>
+              <th>Price</th>
+              <th>Stock</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="inventory-body">
+          </tbody>
+        </table>
+      </div>
     </div>
   </section>
 
+  <div id="editModal" class="modal">
+    <div class="modal-content glass-card">
+      <div class="modal-header">
+        <h3><i class='bx bx-edit-alt'></i> Update Listing</h3>
+        <i class='bx bx-x close-modal' style="cursor:pointer; font-size: 24px;"></i>
+      </div>
+      <form id="edit-form">
+        <input type="hidden" id="edit-index">
+        <div class="input-group">
+          <label>Update Price (₦)</label>
+          <input type="number" id="edit-price" required>
+        </div>
+        <div class="input-group">
+          <label>Add More Logins (Current stock will increase)</label>
+          <textarea id="edit-logins" rows="4" placeholder="Paste additional logins here..."></textarea>
+        </div>
+        <button type="submit" class="btn-primary-gradient">Save Changes</button>
+      </form>
+    </div>
+  </div>
   <script src="./js/addsocial.js"></script>
 </body>
+
 </html>

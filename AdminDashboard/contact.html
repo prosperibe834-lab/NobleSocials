@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NobleSocials Admin</title>
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="./css/contact.css">
+</head>
+
+<body>
+
+  <div class="mobile-header">
+    <div class="brand">
+      <div class="logo-icon-wrap"><i class='bx bx-trending-up'></i></div>
+      <span>NobleSocials</span>
+    </div>
+    <i class='bx bx-menu-alt-right' id="mobile-toggle"></i>
+  </div>
+
+  <nav class="sidebar">
+    <div class="logo-details">
+      <div class="logo-icon-wrap"><i class='bx bx-trending-up icon'></i></div>
+      <span class="logo_name">NobleSocials</span>
+      <i class='bx bx-x' id="close-sidebar"></i>
+    </div>
+
+    <div class="menu-items">
+      <ul class="nav-links">
+        <li><a href="index.html"><i class='bx bx-grid-alt'></i><span class="link_name">Dashboard</span></a></li>
+        <li><a href="transactions.html"><i class='bx bx-transfer'></i><span class="link_name">Transactions</span></a>
+        </li>
+        <li><a href="users.html"><i class='bx bx-user-circle'></i><span class="link_name">Users</span></a></li>
+        <li><a href="boostaccount.html"><i class='bax bx-rocket'></i><span class="link_name">Boost Accounts</span></a>
+        </li>
+        <li><a href="addsocial.html"><i class='bx bx-plus-circle'></i><span class="link_name">Add Social</span></a></li>
+        <li><a href="addvpn.html"><i class='bx bx-shield-quarter'></i><span class="link_name">Add VPN</span></a></li>
+        <li><a href="inventory.html"><i class='bx bx-box'></i><span class="link_name">Inventory</span></a></li>
+
+        <li class="divider"></li>
+
+        <li><a href="#"><i class='bx bx-bar-chart-alt-2'></i><span class="link_name">Analytics</span></a></li>
+        <li><a href="#"><i class='bx bx-cog'></i><span class="link_name">Settings</span></a></li>
+        <li><a href="contact.html" class="active"><i class='bx bx-support'></i><span
+              class="link_name">Contact</span></a></li>
+      </ul>
+
+      <ul class="bottom-links">
+        <li><a href="#" class="logout-btn"><i class='bx bx-log-out'></i><span class="link_name">Logout</span></a></li>
+        <li class="mode">
+          <div class="mode-wrap">
+            <i class='bx bx-moon moon'></i>
+            <span class="link_name mode-text">Dark Mode</span>
+          </div>
+          <div class="toggle-switch">
+            <span class="switch"></span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Main Contents Starts here -->
+  <section class="main-content">
+    <!-- Toast Notification Container -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <div class="content-header-c360">
+      <div class="user-header">
+        <div class="user-avatar-lg">AM</div>
+        <div class="user-title">
+          <h1>Andrew Mackay<i class='bx bx-check-circle verified-icon'></i></h1>
+          <div class="user-meta">
+            <span>User ID: JK500S9</span>
+            <span class="status-badge open" id="ticketStatusBadge">Ticket: Open</span>
+          </div>
+        </div>
+      </div>
+      <div class="header-actions-c360">
+        <button class="action-btn" onclick="triggerAction('add')"><i class='bx bx-user-plus'></i></button>
+        <button class="action-btn" id="starBtn" onclick="toggleStar()"><i class='bx bx-star'></i></button>
+        <button class="action-btn danger" id="banBtn" onclick="toggleBan()"><i class='bx bx-block'></i> <span
+            id="banText">Ban User</span></button>
+      </div>
+    </div>
+
+    <div class="c360-grid">
+      <!-- LEFT SIDE: Profile -->
+      <aside class="profile-summary">
+        <div class="accordion-section open">
+          <h3 class="accordion-trigger">About this Member <i class='bx bx-chevron-up'></i></h3>
+          <div class="accordion-content">
+            <div class="info-item"><i class='bx bx-user'></i> Username: <span>andrewm</span></div>
+            <div class="info-item"><i class='bx bx-envelope'></i> walterb@company.io<i class='bx bx-check'></i></div>
+            <div class="info-item"><i class='bx bx-money'></i> Total Deposit: <span>$1,250.00</span></div>
+            <div class="info-item"><i class='bx bx-box'></i> Active Orders: <span>12</span></div>
+          </div>
+        </div>
+
+        <!-- NEW: Quick Actions Panel -->
+        <div class="accordion-section open">
+          <h3 class="accordion-trigger">Ticket Actions <i class='bx bx-chevron-up'></i></h3>
+          <div class="accordion-content">
+            <select id="statusSelect" class="modern-select" onchange="changeTicketStatus()">
+              <option value="open">Status: Open</option>
+              <option value="pending">Status: Pending</option>
+              <option value="resolved">Status: Resolved</option>
+            </select>
+          </div>
+        </div>
+      </aside>
+
+      <!-- RIGHT SIDE: Main Interaction -->
+      <main class="interaction-main">
+        <!-- Stage Tracker -->
+        <div class="order-stage-tracker">
+          <div class="stage-item complete">
+            <div class="stage-icon">💸</div>
+            <p>Enrolled <small>Aug 10, 2021</small></p>
+          </div>
+          <div class="stage-item complete">
+            <div class="stage-icon">🔍</div>
+            <p>Assessment <small>Aug 13, 2021</small></p>
+          </div>
+          <div class="stage-item active" id="issueStage">
+            <div class="stage-icon">⚠️</div>
+            <p>Issue Raised <small>Active</small></p>
+          </div>
+          <div class="stage-line"></div>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="interaction-tabs">
+          <button class="filter-btn active" data-filter="all">All History</button>
+          <button class="filter-btn" data-filter="ai">AI Transcript</button>
+          <button class="filter-btn" data-filter="form">Official Form</button>
+          <button class="filter-btn" data-filter="note">Order Notes</button>
+          <button class="filter-btn" data-filter="balance">Balance Log</button>
+        </div>
+
+        <!-- The Timeline -->
+        <div class="interaction-timeline" id="mainTimeline">
+
+          <!-- Item: Form -->
+          <div class="timeline-item form-action" data-type="form">
+            <div class="timeline-icon"><i class='bx bx-envelope'></i></div>
+            <div class="timeline-content">
+              <div class="timeline-header">
+                <h4>Form Submission</h4>
+                <span>Aug 13, 2021</span>
+              </div>
+              <div class="timeline-body">
+                <p class="form-subject">Subject: Missing tokens after payment</p>
+                <p class="form-text">"Hi Noble team, I paid for 500 tokens using BTC (TX: abc123def456) and they still
+                  aren't in my account after 2 hours."</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item: AI Chat -->
+          <div class="timeline-item ai-chat" data-type="ai">
+            <div class="timeline-icon ai"><i class='bx bx-bot'></i></div>
+            <div class="timeline-content">
+              <div class="timeline-header">
+                <h4>AI Assistant Transcript</h4>
+                <span>2 mins ago</span>
+              </div>
+              <div class="timeline-body">
+                <div class="msg bot">Hello Andrew! How can Noble AI help you today?</div>
+                <div class="msg user">My Instagram order #5678 is missing.</div>
+                <div class="msg bot">I apologize. System status: Pending. A human agent must review.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item: System Note (Hidden by default unless filtered) -->
+          <div class="timeline-item system-note" data-type="note" style="display:none;">
+            <div class="timeline-icon" style="background:#f59e0b; color:white;"><i class='bx bx-note'></i></div>
+            <div class="timeline-content" style="border-left: 3px solid #f59e0b;">
+              <div class="timeline-header">
+                <h4>Internal Order Note</h4>
+                <span>1 min ago</span>
+              </div>
+              <div class="timeline-body">
+                <p style="font-size: 13px;">API provider delayed. Do not refund yet, wait 24h.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item: Balance Log (Hidden by default) -->
+          <div class="timeline-item balance-log" data-type="balance" style="display:none;">
+            <div class="timeline-icon" style="background:#10b981; color:white;"><i class='bx bx-dollar'></i></div>
+            <div class="timeline-content">
+              <div class="timeline-header">
+                <h4>Balance Updated</h4>
+                <span>Yesterday</span>
+              </div>
+              <div class="timeline-body">
+                <p style="font-size: 13px;">+$50.00 added via Crypto (Coinbase Commerce)</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- THE REPLY BOX -->
+        <div class="timeline-reply-box">
+          <!-- New: Quick Replies -->
+          <div class="quick-replies">
+            <span class="qr-pill" onclick="insertQuickReply('We are checking your transaction now.')">Checking TX</span>
+            <span class="qr-pill" onclick="insertQuickReply('Your order has been restarted.')">Restarted</span>
+            <span class="qr-pill"
+              onclick="insertQuickReply('I have refunded the amount to your panel balance.')">Refunded</span>
+          </div>
+
+          <textarea id="adminReplyText" placeholder="Reply to member (will be sent as an email)..."></textarea>
+
+          <div class="reply-actions">
+            <button class="btn-send-reply" onclick="sendAdminReply()">
+              Send Reply <i class='bx bx-send'></i>
+            </button>
+          </div>
+        </div>
+      </main>
+    </div>
+  </section>
+
+  <script src="./js/contact.js"></script>
+</body>
+
+</html>
